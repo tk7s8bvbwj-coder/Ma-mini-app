@@ -72,6 +72,7 @@
             gap: 10px;
             font-weight: bold;
             font-size: 14px;
+            cursor: pointer;
         }
         .home-card-btn span {
             font-size: 22px;
@@ -217,10 +218,10 @@
     <!-- PAGE 1 : MAISON (ACCUEIL) -->
     <div id="page-maison" class="page active">
         <header>
-            <div class="logo-title" id="main-shop-title">BENDOUZ INDUSTRY</div>
+            <div class="logo-title">BENDOUZ INDUSTRY</div>
             <div class="divider"></div>
             <div class="logo-subtitle">Bendouz Industry • Le shop qui livre</div>
-            <div style="font-size: 12px; color: #666; margin-top: 6px;">Catalogue • Livraison • Click & Collect • Envoi postal</div>
+            <div style="font-size: 12px; color: #666; margin-top: 6px;">Catalogue • Livraison • Click & Collect</div>
         </header>
 
         <div class="section-title">Le Shop</div>
@@ -240,9 +241,8 @@
         </div>
 
         <div class="section-title">Suivez-nous</div>
-        <a href="https://t.me/TON_CANAL" target="_blank" class="home-link-row">Canal Telegram</a>
+        <a href="https://t.me/+xwwz5S_q-9hhZjY0" target="_blank" class="home-link-row">Canal Telegram</a>
         <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="home-link-row">Snapchat (commande)</a>
-        <a href="#" class="home-link-row">Tous nos liens</a>
     </div>
 
     <!-- PAGE 2 : CATALOGUE -->
@@ -272,7 +272,6 @@
 
             <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
         </div>
-        <!-- Tu pourras ajouter d'autres produits ici par la suite -->
     </div>
 
     <!-- PAGE 3 : AVIS -->
@@ -285,29 +284,13 @@
 
         <div class="content-card">
             <h3>Laisser un avis</h3>
-            <p id="welcome-user-avis" style="margin-bottom: 10px;">Bienvenue</p>
-            <textarea placeholder="Partagez votre expérience..." style="width:100%; height:80px; background:#1c1c1e; border:1px solid #333; border-radius:8px; color:#fff; padding:10px; box-sizing:border-box; resize:none;"></textarea>
+            <p id="welcome-user-avis" style="margin-bottom: 10px; color: #fff; font-weight: 500;">Bienvenue</p>
+            <textarea id="avis-text" placeholder="Partagez votre expérience..." style="width:100%; height:80px; background:#1c1c1e; border:1px solid #333; border-radius:8px; color:#fff; padding:10px; box-sizing:border-box; resize:none;"></textarea>
             <div style="display:flex; justify-content:space-between; font-size:11px; color:#666; margin:5px 0 12px 0;">
                 <span>0/500</span>
-                <span>MODÉRÉ AVANT PUBLICATION</span>
+                <span>REDIRIGÉ VERS LE CANAL</span>
             </div>
-            <button style="width:100%; background:linear-gradient(90deg, #ff9900, #ffc107); border:none; border-radius:10px; padding:12px; font-weight:bold; color:#000;">ENVOYER</button>
-        </div>
-
-        <div class="section-title">Ils nous ont fait confiance</div>
-        <div class="content-card">
-            <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;">
-                <strong style="color:#fff;">Aln</strong>
-                <span style="color:#666; font-size:11px;">03 AOÛT 2026</span>
-            </div>
-            <p>Les frères les yeux fermés vous pouvez y allez. Plusieurs années de fidélité c'est comme le big mac tjr copier jamais égalé</p>
-        </div>
-        <div class="content-card">
-            <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;">
-                <strong style="color:#fff;">Moii</strong>
-                <span style="color:#666; font-size:11px;">30 JUIL. 2026</span>
-            </div>
-            <p>Au top la famille 👍👍👍👍👍 rien a dire !!!! Continuer comme ça les gars 🙏👍👍👍👍👍👍👍</p>
+            <button onclick="envoyerAvis()" style="width:100%; background:linear-gradient(90deg, #ff9900, #ffc107); border:none; border-radius:10px; padding:12px; font-weight:bold; color:#000; cursor:pointer;">ENVOYER</button>
         </div>
     </div>
 
@@ -317,20 +300,16 @@
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">L'art du service</div>
             <h2>Services</h2>
             <div class="divider"></div>
-            <p style="color:#888; font-size:13px;">Trois manières de recevoir votre commande.</p>
+            <p style="color:#888; font-size:13px;">Deux manières de recevoir votre commande.</p>
         </div>
 
         <div class="content-card">
             <h3>I • Livraison</h3>
-            <p>Livraison rapide dans la zone locale (62/59/02/80/ Belgique).<br><br>Contactez-nous pour plus de détails.</p>
+            <p>Livraison dans la zone ST-OMER & ALENTOURS (62)</p>
         </div>
         <div class="content-card">
             <h3>II • Sur place</h3>
-            <p>Commandez en ligne, retirez sur place à Roubaix aux horaires d'ouverture.</p>
-        </div>
-        <div class="content-card">
-            <h3>III • Envoi postal</h3>
-            <p>Envoi discret par voie postale. Délai selon destination.</p>
+            <p>Commandez en ligne, retirez sur place à St-Omer aux horaires d'ouverture.</p>
         </div>
     </div>
 
@@ -343,10 +322,7 @@
             <p style="color:#888; font-size:13px;">Choisissez votre canal de prédilection.</p>
         </div>
 
-        <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="home-link-row" style="background:#141414; border:1px solid #333; margin-bottom:12px;">
-            <strong>Snap (secours)</strong><br><span style="font-size:11px; color:#888;">OUVRE DANS UNE NOUVELLE FENÊTRE</span>
-        </a>
-        <a href="https://t.me/TON_CANAL" target="_blank" class="home-link-row" style="background:#141414; border:1px solid #333; margin-bottom:12px;">
+        <a href="https://t.me/+xwwz5S_q-9hhZjY0" target="_blank" class="home-link-row" style="background:#141414; border:1px solid #333; margin-bottom:12px;">
             <strong>Canal Telegram</strong><br><span style="font-size:11px; color:#888;">OUVRE DANS UNE NOUVELLE FENÊTRE</span>
         </a>
         <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="home-link-row" style="background:#141414; border:1px solid #333; margin-bottom:12px;">
@@ -378,28 +354,37 @@
         tg.ready();
         tg.expand();
 
-        // Personnalisation du nom via Telegram
+        let currentUserName = "Client";
+
+        // Récupération dynamique du pseudo Telegram de l'utilisateur
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-            const userName = tg.initDataUnsafe.user.first_name;
-            document.getElementById('main-shop-title').innerText = "BENDOUZ INDUSTRY";
-            document.getElementById('welcome-user-avis').innerText = `Bienvenue, ${userName}`;
+            currentUserName = tg.initDataUnsafe.user.first_name;
+            document.getElementById('welcome-user-avis').innerText = `Bienvenue, ${currentUserName}`;
+        }
+
+        // Fonction pour envoyer l'avis directement vers ton canal d'avis Telegram
+        function envoyerAvis() {
+            const texteAvis = document.getElementById('avis-text').value.trim();
+            if(!texteAvis) {
+                alert("Veuillez écrire un avis avant d'envoyer.");
+                return;
+            }
+            const messageFinal = `💬 Nouvel avis de ${currentUserName} :\n\n"${texteAvis}"`;
+            const urlTelegram = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/+3FMT2erV1JgxZTM0')}&text=${encodeURIComponent(messageFinal)}`;
+            window.open(urlTelegram, '_blank');
         }
 
         // Fonction pour changer de page dynamiquement
         function switchPage(pageId) {
-            // Cacher toutes les pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(p => p.classList.remove('active'));
 
-            // Afficher la page choisie
             document.getElementById('page-' + pageId).classList.add('active');
 
-            // Mettre à jour l'état actif des boutons de la barre du bas
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(n => n.classList.remove('active'));
             document.getElementById('nav-' + pageId).classList.add('active');
 
-            // Remonter en haut de l'écran lors du changement de page
             window.scrollTo(0, 0);
         }
     </script>
