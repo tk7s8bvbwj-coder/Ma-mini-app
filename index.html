@@ -3,140 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bendouz Industry - Catalogue</title>
+    <title>Bendouz Industry</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--tg-theme-bg-color, #ffffff);
-            color: var(--tg-theme-text-color, #000000);
+            background-color: #0b0b0b;
+            color: #ffffff;
             margin: 0;
             padding: 15px;
+            padding-bottom: 80px; /* Espace pour la barre du bas */
             box-sizing: border-box;
         }
         header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
-        h1 {
-            font-size: 22px;
-            margin: 5px 0;
+        .logo-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        .logo-subtitle {
+            font-size: 13px;
+            color: #888;
+            margin-top: 5px;
         }
         .product-card {
-            background: rgba(128, 128, 128, 0.1);
-            border-radius: 12px;
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 16px;
             padding: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            text-align: center;
+            gap: 12px;
         }
         .product-img {
             width: 100%;
-            max-height: 220px;
+            max-height: 240px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 12px;
         }
         .product-title {
             font-weight: bold;
-            font-size: 18px;
+            font-size: 20px;
+            color: #fff;
+            margin-top: 5px;
         }
         .product-desc {
             font-size: 14px;
-            opacity: 0.8;
+            color: #aaa;
         }
-        .pricing-list {
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 8px;
-            padding: 10px;
-            margin: 5px 0;
-            text-align: left;
+        .section-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin: 10px 0 5px 2px;
         }
-        .price-row {
+        /* Grille des tarifs en blocs (façon Rmazone) */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .price-box {
+            background: #1c1c1e;
+            border: 1px solid #2c2c2e;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
             display: flex;
-            justify-content: space-between;
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(128, 128, 128, 0.2);
-            font-size: 15px;
+            flex-direction: column;
+            justify-content: center;
         }
-        .price-row:last-child {
-            border-bottom: none;
+        .price-box .weight {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 4px;
         }
-        .price-amount {
-            color: #2481cc;
+        .price-box .amount {
+            font-size: 18px;
             font-weight: bold;
+            color: #ffffff;
         }
-        .snap-button {
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .btn-snap {
             display: block;
             width: 100%;
-            padding: 12px;
-            font-size: 15px;
+            padding: 14px;
+            font-size: 16px;
             font-weight: bold;
             background-color: #FFFC00;
             color: #000000;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 12px;
             box-sizing: border-box;
-            margin-top: 5px;
             text-align: center;
+        }
+        /* Barre de navigation fixe en bas */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #111;
+            border-top: 1px solid #222;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-sizing: border-box;
+        }
+        .nav-item {
+            text-align: center;
+            color: #888;
+            font-size: 11px;
+            text-decoration: none;
+        }
+        .nav-item.active {
+            color: #FFFC00;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1 id="user-name">Bendouz Industry</h1>
-        <p>Catalogue officiel 👇</p>
+        <div class="logo-title">BENDOUZ INDUSTRY</div>
+        <div class="logo-subtitle">Catalogue officiel ⚡️</div>
     </header>
 
-    <!-- Fiche Produit -->
+    <!-- Fiche Produit style pro -->
     <div class="product-card">
-        <!-- Image stockée directement sur GitHub -->
+        <!-- Ton image GitHub -->
         <img src="IMG_6179.jpeg" alt="Dry No Farm - Mimosa" class="product-img">
         
-        <div class="product-title">Dry No Farm</div>
-        <div class="product-desc">Mimosa</div>
-        
-        <!-- Bloc des 6 tarifs -->
-        <div class="pricing-list">
-            <div class="price-row">
-                <span>1g</span>
-                <span class="price-amount">10€</span>
-            </div>
-            <div class="price-row">
-                <span>5g</span>
-                <span class="price-amount">50€</span>
-            </div>
-            <div class="price-row">
-                <span>10g</span>
-                <span class="price-amount">80€</span>
-            </div>
-            <div class="price-row">
-                <span>25g</span>
-                <span class="price-amount">170€</span>
-            </div>
-            <div class="price-row">
-                <span>50g</span>
-                <span class="price-amount">280€</span>
-            </div>
-            <div class="price-row">
-                <span>100g</span>
-                <span class="price-amount">520€</span>
-            </div>
+        <div>
+            <div class="product-title">Dry No Farm</div>
+            <div class="product-desc">Mimosa • Qualité top</div>
         </div>
         
-        <!-- Bouton de redirection vers Snapchat -->
-        <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="snap-button">Commander sur Snapchat 👻</a>
+        <div class="section-label">Tarification</div>
+        
+        <!-- Grille des prix -->
+        <div class="pricing-grid">
+            <div class="price-box">
+                <span class="weight">1g</span>
+                <span class="amount">10 €</span>
+            </div>
+            <div class="price-box">
+                <span class="weight">5g</span>
+                <span class="amount">50 €</span>
+            </div>
+            <div class="price-box">
+                <span class="weight">10g</span>
+                <span class="amount">80 €</span>
+            </div>
+            <div class="price-box">
+                <span class="weight">25g</span>
+                <span class="amount">170 €</span>
+            </div>
+            <div class="price-box">
+                <span class="weight">50g</span>
+                <span class="amount">280 €</span>
+            </div>
+            <div class="price-box">
+                <span class="weight">100g</span>
+                <span class="amount">520 €</span>
+            </div>
+        </div>
+
+        <!-- Bouton commande -->
+        <div class="action-buttons">
+            <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="btn-snap">SNAPCHAT (COMMANDE) 👻</a>
+        </div>
+    </div>
+
+    <!-- Barre de navigation du bas -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active">🏠<br>Accueil</a>
+        <a href="#" class="nav-item">🛍️<br>Catalogue</a>
+        <a href="#" class="nav-item">⭐<br>Avis</a>
+        <a href="#" class="nav-item">💬<br>Contact</a>
     </div>
 
     <script>
         const tg = window.Telegram.WebApp;
         tg.ready();
         tg.expand();
-
-        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-            document.getElementById('user-name').innerText = `Catalogue de ${tg.initDataUnsafe.user.first_name}`;
-        }
     </script>
 </body>
 </html>
