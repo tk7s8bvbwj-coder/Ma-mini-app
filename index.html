@@ -3,40 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ma Mini App</title>
+    <title>Bendouz Industry - Catalogue</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--tg-theme-bg-color, #ffffff);
             color: var(--tg-theme-text-color, #000000);
+            margin: 0;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 22px;
+            margin: 5px 0;
+        }
+        .product-card {
+            background: rgba(128, 128, 128, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
+            gap: 10px;
             text-align: center;
         }
-        button {
-            padding: 14px 28px;
-            font-size: 16px;
+        .product-img {
+            width: 100%;
+            max-height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product-title {
             font-weight: bold;
-            background-color: var(--tg-theme-button-color, #2481cc);
-            color: var(--tg-theme-button-text-color, #ffffff);
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            margin-top: 20px;
+            font-size: 18px;
+        }
+        .product-desc {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        .pricing-list {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            padding: 10px;
+            margin: 5px 0;
+            text-align: left;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+            font-size: 15px;
+        }
+        .price-row:last-child {
+            border-bottom: none;
+        }
+        .price-amount {
+            color: #2481cc;
+            font-weight: bold;
+        }
+        .snap-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: #FFFC00; /* Jaune Snapchat */
+            color: #000000;
+            text-decoration: none;
+            border-radius: 10px;
+            box-sizing: border-box;
+            margin-top: 5px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1 id="user-name">Bonjour !</h1>
-    <p>Bienvenue dans ma Mini App Telegram.</p>
-    <button onclick="fermerApp()">Fermer</button>
+    <header>
+        <h1 id="user-name">Bendouz Industry</h1>
+        <p>Catalogue officiel 👇</p>
+    </header>
+
+    <!-- Fiche Produit -->
+    <div class="product-card">
+        <!-- Image du produit -->
+        <img src="https://t.me/c/4316156781/2" alt="Dry No Farm - Mimosa" class="product-img">
+        
+        <div class="product-title">Dry No Farm</div>
+        <div class="product-desc">Mimosa</div>
+        
+        <!-- Bloc des 6 tarifs -->
+        <div class="pricing-list">
+            <div class="price-row">
+                <span>1g</span>
+                <span class="price-amount">10€</span>
+            </div>
+            <div class="price-row">
+                <span>5g</span>
+                <span class="price-amount">50€</span>
+            </div>
+            <div class="price-row">
+                <span>10g</span>
+                <span class="price-amount">80€</span>
+            </div>
+            <div class="price-row">
+                <span>25g</span>
+                <span class="price-amount">170€</span>
+            </div>
+            <div class="price-row">
+                <span>50g</span>
+                <span class="price-amount">280€</span>
+            </div>
+            <div class="price-row">
+                <span>100g</span>
+                <span class="price-amount">520€</span>
+            </div>
+        </div>
+        
+        <!-- Bouton de redirection vers Snapchat (pense à remplacer TON_PSEUDO_SNAP par ton vrai pseudo si ce n'est pas déjà fait) -->
+        <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="snap-button">Commander sur Snapchat 👻</a>
+    </div>
 
     <script>
         const tg = window.Telegram.WebApp;
@@ -44,11 +135,7 @@
         tg.expand();
 
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-            document.getElementById('user-name').innerText = `Bonjour ${tg.initDataUnsafe.user.first_name} !`;
-        }
-
-        function fermerApp() {
-            tg.close();
+            document.getElementById('user-name').innerText = `Catalogue de ${tg.initDataUnsafe.user.first_name}`;
         }
     </script>
 </body>
