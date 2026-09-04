@@ -89,7 +89,7 @@
             margin-bottom: 10px;
             font-weight: 500;
         }
-        /* Grille catalogue côte à côte */
+        /* Grille catalogue côte à côte (3 articles : 2 en haut, 1 en bas ou alignés) */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -305,7 +305,6 @@
 </head>
 <body>
 
-    <!-- PAGE 1 : MAISON (ACCUEIL) -->
     <div id="page-maison" class="page active">
         <header>
             <div class="logo-title">BENDOUZ INDUSTRY</div>
@@ -335,7 +334,6 @@
         <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="home-link-row">Snapchat (commande)</a>
     </div>
 
-    <!-- PAGE 2 : CATALOGUE (GRILLE CÔTE À CÔTE) -->
     <div id="page-catalogue" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">La Boutique</div>
@@ -344,36 +342,42 @@
         </div>
 
         <div class="catalog-grid">
-            <!-- Produit 1 -->
             <div class="catalog-item" onclick="switchPage('produit-1')">
                 <img src="IMG_6179.jpeg" alt="Dry No Farm" class="catalog-img">
                 <div>
                     <div class="catalog-name">Dry No Farm</div>
-                    <div class="catalog-sub">Mimosa</div>
+                    <div class="catalog-sub">Mimosa 🍋🍋‍🟩</div>
                 </div>
                 <div class="catalog-price">À partir de 10 €</div>
             </div>
 
-            <!-- Produit 2 -->
+            <div class="catalog-item" onclick="switchPage('produit-3')">
+                <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="Dry 90u/220u" class="catalog-img">
+                <div>
+                    <div class="catalog-name">Dry 90u/220u</div>
+                    <div class="catalog-sub">SixStar ⭐️</div>
+                </div>
+                <div class="catalog-price">À partir de 15 €</div>
+            </div>
+
             <div class="catalog-item" onclick="switchPage('produit-2')">
                 <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="No Farm" class="catalog-img">
                 <div>
                     <div class="catalog-name">No Farm</div>
-                    <div class="catalog-sub">G-13</div>
+                    <div class="catalog-sub">G-13 🥦</div>
                 </div>
                 <div class="catalog-price">À partir de 10 €</div>
             </div>
         </div>
     </div>
 
-    <!-- SOUS-PAGE 1 : DÉTAIL PRODUIT 1 -->
     <div id="page-produit-1" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
             <img src="IMG_6179.jpeg" alt="Dry No Farm - Mimosa" class="product-img">
             <div>
                 <div class="product-title">Dry No Farm</div>
-                <div class="product-desc">Mimosa</div>
+                <div class="product-desc">Mimosa 🍋🍋‍🟩</div>
             </div>
             
             <div class="pricing-grid">
@@ -389,20 +393,15 @@
         </div>
     </div>
 
-    <!-- SOUS-PAGE 2 : DÉTAIL PRODUIT 2 (AVEC SÉLECTEUR VIDÉO / PHOTO ET TIMELINE) -->
     <div id="page-produit-2" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
             
-            <!-- Grand écran média interactif -->
             <div class="main-media-container">
-                <!-- Vidéo avec commandes de lecture (timeline) -->
                 <video id="main-video-p2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produits%201.mp4" class="product-video" controls playsinline></video>
-                <!-- Image principale (cachée par défaut) -->
                 <img id="main-img-p2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="No Farm G-13" class="product-img" style="display: none;">
             </div>
 
-            <!-- Deux petites miniatures côte à côte pour basculer -->
             <div class="thumbs-grid">
                 <div class="thumb-box active" id="thumb-video-p2" onclick="showMediaP2('video')">
                     <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produits%201.mp4" muted playsinline></video>
@@ -414,7 +413,7 @@
 
             <div>
                 <div class="product-title">No Farm</div>
-                <div class="product-desc">G-13</div>
+                <div class="product-desc">G-13 🥦</div>
             </div>
             
             <div class="pricing-grid">
@@ -429,7 +428,39 @@
         </div>
     </div>
 
-    <!-- PAGE 3 : AVIS -->
+    <div id="page-produit-3" class="page">
+        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
+        <div class="product-card">
+            
+            <div class="main-media-container">
+                <img id="main-img-p3" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="Dry 90u/220u" class="product-img">
+                <video id="main-video-p3" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4" class="product-video" controls playsinline style="display: none;"></video>
+            </div>
+
+            <div class="thumbs-grid">
+                <div class="thumb-box active" id="thumb-img-p3" onclick="showMediaP3('image')">
+                    <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="Miniature photo">
+                </div>
+                <div class="thumb-box" id="thumb-video-p3" onclick="showMediaP3('video')">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4" muted playsinline></video>
+                </div>
+            </div>
+
+            <div>
+                <div class="product-title">Dry 90u/220u</div>
+                <div class="product-desc">SixStar ⭐️<br>BLUE DREAM MOUNTAIN IN LAANSSER🍭🍦 45% THC</div>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="price-box"><span class="weight">1g</span><span class="amount">15 €</span></div>
+                <div class="price-box"><span class="weight">5g</span><span class="amount">60 €</span></div>
+                <div class="price-box"><span class="weight">10g</span><span class="amount">90 €</span></div>
+            </div>
+
+            <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
+        </div>
+    </div>
+
     <div id="page-avis" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">La Maison</div>
@@ -449,7 +480,6 @@
         </div>
     </div>
 
-    <!-- PAGE 4 : SERVICES -->
     <div id="page-services" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">L'art du service</div>
@@ -468,7 +498,6 @@
         </div>
     </div>
 
-    <!-- PAGE 5 : CONTACT -->
     <div id="page-contact" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Restons en lien</div>
@@ -485,7 +514,6 @@
         </a>
     </div>
 
-    <!-- BARRE DE NAVIGATION FIXE EN BAS -->
     <nav class="bottom-nav">
         <button class="nav-item active" onclick="switchPage('maison')" id="nav-maison">
             <span>🏠</span>Maison
@@ -516,7 +544,7 @@
             document.getElementById('welcome-user-avis').innerText = `Bienvenue, ${currentUserName}`;
         }
 
-        // Fonction pour basculer entre la vidéo et l'image dans la fiche du produit 2
+        // Bascule média pour le Produit 2
         function showMediaP2(type) {
             const videoElem = document.getElementById('main-video-p2');
             const imgElem = document.getElementById('main-img-p2');
@@ -531,9 +559,30 @@
             } else {
                 videoElem.style.display = 'none';
                 imgElem.style.display = 'block';
-                videoElem.pause(); // Met en pause la vidéo si on bascule sur la photo
+                videoElem.pause();
                 thumbImg.classList.add('active');
                 thumbVideo.classList.remove('active');
+            }
+        }
+
+        // Bascule média pour le Produit 3 (Photo par défaut, vidéo contrôlable au clic)
+        function showMediaP3(type) {
+            const imgElem = document.getElementById('main-img-p3');
+            const videoElem = document.getElementById('main-video-p3');
+            const thumbImg = document.getElementById('thumb-img-p3');
+            const thumbVideo = document.getElementById('thumb-video-p3');
+
+            if (type === 'image') {
+                imgElem.style.display = 'block';
+                videoElem.style.display = 'none';
+                videoElem.pause();
+                thumbImg.classList.add('active');
+                thumbVideo.classList.remove('active');
+            } else {
+                imgElem.style.display = 'none';
+                videoElem.style.display = 'block';
+                thumbVideo.classList.add('active');
+                thumbImg.classList.remove('active');
             }
         }
 
@@ -557,7 +606,7 @@
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(n => n.classList.remove('active'));
             
-            if(pageId === 'produit-1' || pageId === 'produit-2') {
+            if(pageId === 'produit-1' || pageId === 'produit-2' || pageId === 'produit-3') {
                 document.getElementById('nav-catalogue').classList.add('active');
             } else {
                 const activeNav = document.getElementById('nav-' + pageId);
