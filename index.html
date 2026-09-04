@@ -123,6 +123,7 @@
             font-size: 12px;
             color: #888;
             margin-bottom: 6px;
+            white-space: pre-line;
         }
         .catalog-price {
             font-size: 13px;
@@ -192,6 +193,7 @@
         .product-desc {
             font-size: 14px;
             color: #aaa;
+            white-space: pre-line;
         }
         .pricing-grid {
             display: grid;
@@ -344,12 +346,12 @@
         </div>
 
         <div class="catalog-grid">
-            <!-- Produit 1 : Dry No Farm -->
+            <!-- Produit 1 : Dry No Farm (Corrigé sans G-13) -->
             <div class="catalog-item" onclick="switchPage('produit-1')">
                 <img src="IMG_6179.jpeg" alt="Dry No Farm" class="catalog-img">
                 <div>
                     <div class="catalog-name">Dry No Farm</div>
-                    <div class="catalog-sub">Mimosa 🍋🍋‍🟩 & G-13 🥦</div>
+                    <div class="catalog-sub">Mimosa 🍋🍋‍🟩</div>
                 </div>
                 <div class="catalog-price">À partir de 10 €</div>
             </div>
@@ -364,7 +366,7 @@
                 <div class="catalog-price">À partir de 10 €</div>
             </div>
 
-            <!-- Produit 3 : Dry 90u/220u (Affichage direct d'une miniature vidéo intégrée pour ne pas dépendre d'une photo absente) -->
+            <!-- Produit 3 : Dry 90u/220u -->
             <div class="catalog-item" onclick="switchPage('produit-3')">
                 <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4#t=1" class="catalog-img" muted preload="metadata"></video>
                 <div>
@@ -372,6 +374,26 @@
                     <div class="catalog-sub">SixStar ⭐️</div>
                 </div>
                 <div class="catalog-price">À partir de 15 €</div>
+            </div>
+
+            <!-- Produit 4 : Dry 90u Prenium (Gelato / Lemon / Banana) -->
+            <div class="catalog-item" onclick="switchPage('produit-4')">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4#t=1" class="catalog-img" muted preload="metadata"></video>
+                <div>
+                    <div class="catalog-name">Dry 90u Prenium ✅</div>
+                    <div class="catalog-sub">Wilz Farm 🧪👨‍🔬</div>
+                </div>
+                <div class="catalog-price">À partir de 13 €</div>
+            </div>
+
+            <!-- Produit 5 : Dry 90u Prenium (Pink Runtz) -->
+            <div class="catalog-item" onclick="switchPage('produit-5')">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%205%20(%20pink%20runtz).mp4#t=1" class="catalog-img" muted preload="metadata"></video>
+                <div>
+                    <div class="catalog-name">Dry 90u Prenium ✅</div>
+                    <div class="catalog-sub">Wilz Farmz 🧪👨‍🔬</div>
+                </div>
+                <div class="catalog-price">À partir de 12 €</div>
             </div>
         </div>
     </div>
@@ -383,7 +405,7 @@
             <img src="IMG_6179.jpeg" alt="Dry No Farm - Mimosa" class="product-img">
             <div>
                 <div class="product-title">Dry No Farm</div>
-                <div class="product-desc">Mimosa 🍋🍋‍🟩 & G-13 🥦</div>
+                <div class="product-desc">Mimosa 🍋🍋‍🟩</div>
             </div>
             
             <div class="pricing-grid">
@@ -435,13 +457,13 @@
         </div>
     </div>
 
-    <!-- SOUS-PAGE 3 : DÉTAIL PRODUIT 3 (Dry 90u/220u) -->
+    <!-- SOUS-PAGE 3 : DÉTAIL PRODUIT 3 -->
     <div id="page-produit-3" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
             
             <div class="main-media-container">
-                <video id="main-video-p3" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4" class="product-video" controls playsinline></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4" class="product-video" controls playsinline></video>
             </div>
 
             <div>
@@ -453,6 +475,74 @@
                 <div class="price-box"><span class="weight">1g</span><span class="amount">15 €</span></div>
                 <div class="price-box"><span class="weight">5g</span><span class="amount">60 €</span></div>
                 <div class="price-box"><span class="weight">10g</span><span class="amount">90 €</span></div>
+            </div>
+
+            <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
+        </div>
+    </div>
+
+    <!-- SOUS-PAGE 4 : DÉTAIL PRODUIT 4 (Multi-vidéos : Gelato, Lemon Cherry, Banana Punsh) -->
+    <div id="page-produit-4" class="page">
+        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
+        <div class="product-card">
+            
+            <div class="main-media-container">
+                <video id="main-video-p4-1" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4" class="product-video" controls playsinline></video>
+                <video id="main-video-p4-2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20lemon%20cherry)%20.mp4" class="product-video" controls playsinline style="display:none;"></video>
+                <video id="main-video-p4-3" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20banana%20).mp4" class="product-video" controls playsinline style="display:none;"></video>
+            </div>
+
+            <div class="thumbs-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="thumb-box active" id="thumb-p4-1" onclick="showMediaP4(1)">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4" muted playsinline></video>
+                </div>
+                <div class="thumb-box" id="thumb-p4-2" onclick="showMediaP4(2)">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20lemon%20cherry)%20.mp4" muted playsinline></video>
+                </div>
+                <div class="thumb-box" id="thumb-p4-3" onclick="showMediaP4(3)">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20banana%20).mp4" muted playsinline></video>
+                </div>
+            </div>
+
+            <div>
+                <div class="product-title">Dry 90u Prenium ✅</div>
+                <div class="product-desc">Wilz Farm 🧪👨‍🔬
+40% THC
+- GELATO33 🍭🍦
+- LEMON CHERRY 🍋🍒
+- BANANA PUNSH 🍌🍹</div>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="price-box"><span class="weight">1g</span><span class="amount">13 €</span></div>
+                <div class="price-box"><span class="weight">5g</span><span class="amount">55 €</span></div>
+                <div class="price-box"><span class="weight">10g</span><span class="amount">85 €</span></div>
+            </div>
+
+            <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
+        </div>
+    </div>
+
+    <!-- SOUS-PAGE 5 : DÉTAIL PRODUIT 5 (Pink Runtz) -->
+    <div id="page-produit-5" class="page">
+        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
+        <div class="product-card">
+            
+            <div class="main-media-container">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%205%20(%20pink%20runtz).mp4" class="product-video" controls playsinline></video>
+            </div>
+
+            <div>
+                <div class="product-title">Dry 90u Prenium ✅</div>
+                <div class="product-desc">Wilz Farmz 🧪👨‍🔬
+39% THC
+PINK RUNTZ 🍇🍌</div>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="price-box"><span class="weight">1g</span><span class="amount">12 €</span></div>
+                <div class="price-box"><span class="weight">5g</span><span class="amount">50 €</span></div>
+                <div class="price-box"><span class="weight">10g</span><span class="amount">80 €</span></div>
             </div>
 
             <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
@@ -567,6 +657,34 @@
             }
         }
 
+        // Bascule multi-vidéos pour le Produit 4
+        function showMediaP4(index) {
+            const v1 = document.getElementById('main-video-p4-1');
+            const v2 = document.getElementById('main-video-p4-2');
+            const v3 = document.getElementById('main-video-p4-3');
+            const t1 = document.getElementById('thumb-p4-1');
+            const t2 = document.getElementById('thumb-p4-2');
+            const t3 = document.getElementById('thumb-p4-3');
+
+            v1.style.display = 'none'; v1.pause();
+            v2.style.display = 'none'; v2.pause();
+            v3.style.display = 'none'; v3.pause();
+            t1.classList.remove('active');
+            t2.classList.remove('active');
+            t3.classList.remove('active');
+
+            if(index === 1) {
+                v1.style.display = 'block';
+                t1.classList.add('active');
+            } else if(index === 2) {
+                v2.style.display = 'block';
+                t2.classList.add('active');
+            } else if(index === 3) {
+                v3.style.display = 'block';
+                t3.classList.add('active');
+            }
+        }
+
         function envoyerAvis() {
             const texteAvis = document.getElementById('avis-text').value.trim();
             if(!texteAvis) {
@@ -587,7 +705,7 @@
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(n => n.classList.remove('active'));
             
-            if(pageId === 'produit-1' || pageId === 'produit-2' || pageId === 'produit-3') {
+            if(pageId.startsWith('produit-')) {
                 document.getElementById('nav-catalogue').classList.add('active');
             } else {
                 const activeNav = document.getElementById('nav-' + pageId);
