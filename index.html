@@ -305,6 +305,7 @@
 </head>
 <body>
 
+    <!-- PAGE 1 : MAISON (ACCUEIL) -->
     <div id="page-maison" class="page active">
         <header>
             <div class="logo-title">BENDOUZ INDUSTRY</div>
@@ -334,6 +335,7 @@
         <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="home-link-row">Snapchat (commande)</a>
     </div>
 
+    <!-- PAGE 2 : CATALOGUE (GRILLE CÔTE À CÔTE) -->
     <div id="page-catalogue" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">La Boutique</div>
@@ -342,6 +344,7 @@
         </div>
 
         <div class="catalog-grid">
+            <!-- Produit 1 : Dry No Farm -->
             <div class="catalog-item" onclick="switchPage('produit-1')">
                 <img src="IMG_6179.jpeg" alt="Dry No Farm" class="catalog-img">
                 <div>
@@ -351,6 +354,7 @@
                 <div class="catalog-price">À partir de 10 €</div>
             </div>
 
+            <!-- Produit 2 : No Farm -->
             <div class="catalog-item" onclick="switchPage('produit-2')">
                 <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="No Farm" class="catalog-img">
                 <div>
@@ -360,8 +364,9 @@
                 <div class="catalog-price">À partir de 10 €</div>
             </div>
 
+            <!-- Produit 3 : Dry 90u/220u (Utilisation temporaire d'une image valide pour l'aperçu catalogue) -->
             <div class="catalog-item" onclick="switchPage('produit-3')">
-                <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6251.jpeg" alt="Dry 90u/220u" class="catalog-img">
+                <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="Dry 90u/220u" class="catalog-img">
                 <div>
                     <div class="catalog-name">Dry 90u/220u</div>
                     <div class="catalog-sub">SixStar ⭐️</div>
@@ -371,6 +376,7 @@
         </div>
     </div>
 
+    <!-- SOUS-PAGE 1 : DÉTAIL PRODUIT 1 -->
     <div id="page-produit-1" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
@@ -393,6 +399,7 @@
         </div>
     </div>
 
+    <!-- SOUS-PAGE 2 : DÉTAIL PRODUIT 2 -->
     <div id="page-produit-2" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
@@ -428,22 +435,13 @@
         </div>
     </div>
 
+    <!-- SOUS-PAGE 3 : DÉTAIL PRODUIT 3 (Dry 90u/220u) avec Vidéo intégrée correctement -->
     <div id="page-produit-3" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
             
             <div class="main-media-container">
-                <img id="main-img-p3" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6251.jpeg" alt="Dry 90u/220u" class="product-img">
-                <video id="main-video-p3" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4" class="product-video" controls playsinline style="display: none;"></video>
-            </div>
-
-            <div class="thumbs-grid">
-                <div class="thumb-box active" id="thumb-img-p3" onclick="showMediaP3('image')">
-                    <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6251.jpeg" alt="Miniature photo">
-                </div>
-                <div class="thumb-box" id="thumb-video-p3" onclick="showMediaP3('video')">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4" muted playsinline></video>
-                </div>
+                <video id="main-video-p3" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4" class="product-video" controls playsinline></video>
             </div>
 
             <div>
@@ -461,6 +459,7 @@
         </div>
     </div>
 
+    <!-- PAGE 3 : AVIS -->
     <div id="page-avis" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">La Maison</div>
@@ -480,6 +479,7 @@
         </div>
     </div>
 
+    <!-- PAGE 4 : SERVICES -->
     <div id="page-services" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">L'art du service</div>
@@ -498,6 +498,7 @@
         </div>
     </div>
 
+    <!-- PAGE 5 : CONTACT -->
     <div id="page-contact" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Restons en lien</div>
@@ -514,6 +515,7 @@
         </a>
     </div>
 
+    <!-- BARRE DE NAVIGATION FIXE EN BAS -->
     <nav class="bottom-nav">
         <button class="nav-item active" onclick="switchPage('maison')" id="nav-maison">
             <span>🏠</span>Maison
@@ -562,27 +564,6 @@
                 videoElem.pause();
                 thumbImg.classList.add('active');
                 thumbVideo.classList.remove('active');
-            }
-        }
-
-        // Bascule média pour le Produit 3
-        function showMediaP3(type) {
-            const imgElem = document.getElementById('main-img-p3');
-            const videoElem = document.getElementById('main-video-p3');
-            const thumbImg = document.getElementById('thumb-img-p3');
-            const thumbVideo = document.getElementById('thumb-video-p3');
-
-            if (type === 'image') {
-                imgElem.style.display = 'block';
-                videoElem.style.display = 'none';
-                videoElem.pause();
-                thumbImg.classList.add('active');
-                thumbVideo.classList.remove('active');
-            } else {
-                imgElem.style.display = 'none';
-                videoElem.style.display = 'block';
-                thumbVideo.classList.add('active');
-                thumbImg.classList.remove('active');
             }
         }
 
