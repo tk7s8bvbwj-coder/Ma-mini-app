@@ -51,7 +51,7 @@
             color: #666;
             margin: 25px 0 15px 0;
         }
-        /* Style des boutons du menu Accueil */
+        /* Accueil */
         .home-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -89,7 +89,7 @@
             margin-bottom: 10px;
             font-weight: 500;
         }
-        /* Grille du catalogue (Produits côte à côte) */
+        /* Grille catalogue côte à côte */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -141,16 +141,53 @@
             flex-direction: column;
             gap: 12px;
         }
+        .main-media-container {
+            width: 100%;
+            max-height: 260px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         .product-img, .product-video {
             width: 100%;
-            max-height: 240px;
+            max-height: 260px;
             object-fit: cover;
             border-radius: 12px;
+            display: block;
         }
+        /* Miniatures côte à côte en bas */
+        .thumbs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .thumb-box {
+            background: #1c1c1e;
+            border: 2px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            height: 70px;
+            position: relative;
+        }
+        .thumb-box.active {
+            border-color: #ff9900;
+        }
+        .thumb-box img, .thumb-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .product-title {
             font-weight: bold;
             font-size: 20px;
             color: #fff;
+            margin-top: 5px;
         }
         .product-desc {
             font-size: 14px;
@@ -268,6 +305,7 @@
 </head>
 <body>
 
+    <!-- PAGE 1 : MAISON (ACCUEIL) -->
     <div id="page-maison" class="page active">
         <header>
             <div class="logo-title">BENDOUZ INDUSTRY</div>
@@ -297,6 +335,7 @@
         <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="home-link-row">Snapchat (commande)</a>
     </div>
 
+    <!-- PAGE 2 : CATALOGUE (GRILLE CÔTE À CÔTE) -->
     <div id="page-catalogue" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">La Boutique</div>
@@ -305,6 +344,7 @@
         </div>
 
         <div class="catalog-grid">
+            <!-- Produit 1 -->
             <div class="catalog-item" onclick="switchPage('produit-1')">
                 <img src="IMG_6179.jpeg" alt="Dry No Farm" class="catalog-img">
                 <div>
@@ -314,6 +354,7 @@
                 <div class="catalog-price">À partir de 10 €</div>
             </div>
 
+            <!-- Produit 2 -->
             <div class="catalog-item" onclick="switchPage('produit-2')">
                 <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="No Farm" class="catalog-img">
                 <div>
@@ -325,6 +366,7 @@
         </div>
     </div>
 
+    <!-- SOUS-PAGE 1 : DÉTAIL PRODUIT 1 -->
     <div id="page-produit-1" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
@@ -347,11 +389,28 @@
         </div>
     </div>
 
+    <!-- SOUS-PAGE 2 : DÉTAIL PRODUIT 2 (AVEC SÉLECTEUR VIDÉO / PHOTO ET TIMELINE) -->
     <div id="page-produit-2" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
-            <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produits%201.mp4" class="product-video" autoplay muted loop playsinline></video>
-            <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="No Farm G-13" class="product-img" style="margin-top: 10px;">
+            
+            <!-- Grand écran média interactif -->
+            <div class="main-media-container">
+                <!-- Vidéo avec commandes de lecture (timeline) -->
+                <video id="main-video-p2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produits%201.mp4" class="product-video" controls playsinline></video>
+                <!-- Image principale (cachée par défaut) -->
+                <img id="main-img-p2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="No Farm G-13" class="product-img" style="display: none;">
+            </div>
+
+            <!-- Deux petites miniatures côte à côte pour basculer -->
+            <div class="thumbs-grid">
+                <div class="thumb-box active" id="thumb-video-p2" onclick="showMediaP2('video')">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produits%201.mp4" muted playsinline></video>
+                </div>
+                <div class="thumb-box" id="thumb-img-p2" onclick="showMediaP2('image')">
+                    <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="Miniature photo">
+                </div>
+            </div>
 
             <div>
                 <div class="product-title">No Farm</div>
@@ -370,6 +429,7 @@
         </div>
     </div>
 
+    <!-- PAGE 3 : AVIS -->
     <div id="page-avis" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">La Maison</div>
@@ -389,6 +449,7 @@
         </div>
     </div>
 
+    <!-- PAGE 4 : SERVICES -->
     <div id="page-services" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">L'art du service</div>
@@ -407,6 +468,7 @@
         </div>
     </div>
 
+    <!-- PAGE 5 : CONTACT -->
     <div id="page-contact" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Restons en lien</div>
@@ -423,6 +485,7 @@
         </a>
     </div>
 
+    <!-- BARRE DE NAVIGATION FIXE EN BAS -->
     <nav class="bottom-nav">
         <button class="nav-item active" onclick="switchPage('maison')" id="nav-maison">
             <span>🏠</span>Maison
@@ -453,6 +516,27 @@
             document.getElementById('welcome-user-avis').innerText = `Bienvenue, ${currentUserName}`;
         }
 
+        // Fonction pour basculer entre la vidéo et l'image dans la fiche du produit 2
+        function showMediaP2(type) {
+            const videoElem = document.getElementById('main-video-p2');
+            const imgElem = document.getElementById('main-img-p2');
+            const thumbVideo = document.getElementById('thumb-video-p2');
+            const thumbImg = document.getElementById('thumb-img-p2');
+
+            if (type === 'video') {
+                videoElem.style.display = 'block';
+                imgElem.style.display = 'none';
+                thumbVideo.classList.add('active');
+                thumbImg.classList.remove('active');
+            } else {
+                videoElem.style.display = 'none';
+                imgElem.style.display = 'block';
+                videoElem.pause(); // Met en pause la vidéo si on bascule sur la photo
+                thumbImg.classList.add('active');
+                thumbVideo.classList.remove('active');
+            }
+        }
+
         function envoyerAvis() {
             const texteAvis = document.getElementById('avis-text').value.trim();
             if(!texteAvis) {
@@ -473,7 +557,6 @@
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(n => n.classList.remove('active'));
             
-            // Si on est sur une sous-page produit, on garde l'onglet catalogue illuminé dans la barre du bas
             if(pageId === 'produit-1' || pageId === 'produit-2') {
                 document.getElementById('nav-catalogue').classList.add('active');
             } else {
