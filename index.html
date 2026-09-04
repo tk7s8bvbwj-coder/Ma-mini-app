@@ -89,7 +89,48 @@
             margin-bottom: 10px;
             font-weight: 500;
         }
-        /* Fiche Produit Catalogue */
+        /* Grille du catalogue (Produits côte à côte) */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .catalog-item {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 14px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .catalog-img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+        .catalog-name {
+            font-weight: bold;
+            font-size: 15px;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+        .catalog-sub {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 6px;
+        }
+        .catalog-price {
+            font-size: 13px;
+            font-weight: bold;
+            color: #ff9900;
+        }
+
+        /* Fiche Produit Détail */
         .product-card {
             background: #141414;
             border: 1px solid #222;
@@ -153,6 +194,18 @@
             text-align: center;
             margin-top: 15px;
         }
+        .btn-back {
+            background: #222;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
         /* Pages Avis, Services, Contact */
         .content-card {
             background: #141414;
@@ -215,7 +268,6 @@
 </head>
 <body>
 
-    <!-- PAGE 1 : MAISON (ACCUEIL) -->
     <div id="page-maison" class="page active">
         <header>
             <div class="logo-title">BENDOUZ INDUSTRY</div>
@@ -245,7 +297,6 @@
         <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="home-link-row">Snapchat (commande)</a>
     </div>
 
-    <!-- PAGE 2 : CATALOGUE -->
     <div id="page-catalogue" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">La Boutique</div>
@@ -253,7 +304,29 @@
             <div class="divider"></div>
         </div>
 
-        <!-- Produit 1 : Dry No Farm (Mimosa) -->
+        <div class="catalog-grid">
+            <div class="catalog-item" onclick="switchPage('produit-1')">
+                <img src="IMG_6179.jpeg" alt="Dry No Farm" class="catalog-img">
+                <div>
+                    <div class="catalog-name">Dry No Farm</div>
+                    <div class="catalog-sub">Mimosa</div>
+                </div>
+                <div class="catalog-price">À partir de 10 €</div>
+            </div>
+
+            <div class="catalog-item" onclick="switchPage('produit-2')">
+                <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="No Farm" class="catalog-img">
+                <div>
+                    <div class="catalog-name">No Farm</div>
+                    <div class="catalog-sub">G-13</div>
+                </div>
+                <div class="catalog-price">À partir de 10 €</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page-produit-1" class="page">
+        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
             <img src="IMG_6179.jpeg" alt="Dry No Farm - Mimosa" class="product-img">
             <div>
@@ -272,13 +345,12 @@
 
             <a href="https://snapchat.com/add/TON_PSEUDO_SNAP" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
         </div>
+    </div>
 
-        <!-- Produit 2 : No Farm (G-13) avec Vidéo et Image Raw GitHub -->
+    <div id="page-produit-2" class="page">
+        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
-            <!-- Vidéo en boucle -->
             <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produits%201.mp4" class="product-video" autoplay muted loop playsinline></video>
-            
-            <!-- Image du produit -->
             <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="No Farm G-13" class="product-img" style="margin-top: 10px;">
 
             <div>
@@ -298,7 +370,6 @@
         </div>
     </div>
 
-    <!-- PAGE 3 : AVIS -->
     <div id="page-avis" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">La Maison</div>
@@ -318,7 +389,6 @@
         </div>
     </div>
 
-    <!-- PAGE 4 : SERVICES -->
     <div id="page-services" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">L'art du service</div>
@@ -337,7 +407,6 @@
         </div>
     </div>
 
-    <!-- PAGE 5 : CONTACT -->
     <div id="page-contact" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Restons en lien</div>
@@ -354,7 +423,6 @@
         </a>
     </div>
 
-    <!-- BARRE DE NAVIGATION FIXE EN BAS -->
     <nav class="bottom-nav">
         <button class="nav-item active" onclick="switchPage('maison')" id="nav-maison">
             <span>🏠</span>Maison
@@ -380,13 +448,11 @@
 
         let currentUserName = "Client";
 
-        // Récupération dynamique du pseudo Telegram de l'utilisateur
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
             currentUserName = tg.initDataUnsafe.user.first_name;
             document.getElementById('welcome-user-avis').innerText = `Bienvenue, ${currentUserName}`;
         }
 
-        // Fonction pour envoyer l'avis directement vers ton canal d'avis Telegram
         function envoyerAvis() {
             const texteAvis = document.getElementById('avis-text').value.trim();
             if(!texteAvis) {
@@ -398,7 +464,6 @@
             window.open(urlTelegram, '_blank');
         }
 
-        // Fonction pour changer de page dynamiquement
         function switchPage(pageId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(p => p.classList.remove('active'));
@@ -407,7 +472,14 @@
 
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(n => n.classList.remove('active'));
-            document.getElementById('nav-' + pageId).classList.add('active');
+            
+            // Si on est sur une sous-page produit, on garde l'onglet catalogue illuminé dans la barre du bas
+            if(pageId === 'produit-1' || pageId === 'produit-2') {
+                document.getElementById('nav-catalogue').classList.add('active');
+            } else {
+                const activeNav = document.getElementById('nav-' + pageId);
+                if(activeNav) activeNav.classList.add('active');
+            }
 
             window.scrollTo(0, 0);
         }
