@@ -159,20 +159,20 @@
             border-radius: 12px;
             display: block;
         }
-        /* Miniatures côte à côte en bas */
+        /* Miniatures côte à côte en bas (plus petites) */
         .thumbs-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 5px;
+            gap: 8px;
+            margin-top: 2px;
         }
         .thumb-box {
             background: #1c1c1e;
             border: 2px solid #333;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
-            height: 70px;
+            height: 50px;
             position: relative;
         }
         .thumb-box.active {
@@ -575,7 +575,17 @@ PINK RUNTZ 🍇🍌</div>
         <div class="product-card">
             
             <div class="main-media-container">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4" class="product-video" controls playsinline></video>
+                <video id="main-video-p6-1" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4" class="product-video" controls playsinline></video>
+                <video id="main-video-p6-2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5().mp4" class="product-video" controls playsinline style="display:none;"></video>
+            </div>
+
+            <div class="thumbs-grid">
+                <div class="thumb-box active" id="thumb-p6-1" onclick="showMediaP6(1)">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4" muted playsinline></video>
+                </div>
+                <div class="thumb-box" id="thumb-p6-2" onclick="showMediaP6(2)">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5().mp4" muted playsinline></video>
+                </div>
             </div>
 
             <div>
@@ -586,6 +596,7 @@ PINK RUNTZ 🍇🍌</div>
             <div class="pricing-grid">
                 <div class="price-box"><span class="weight">1g</span><span class="amount">20 €</span></div>
                 <div class="price-box"><span class="weight">5g</span><span class="amount">90 €</span></div>
+                <div class="price-box"><span class="weight">10g</span><span class="amount">180 €</span></div>
             </div>
 
             <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
@@ -598,7 +609,17 @@ PINK RUNTZ 🍇🍌</div>
         <div class="product-card">
             
             <div class="main-media-container">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4" class="product-video" controls playsinline></video>
+                <video id="main-video-p7-1" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4" class="product-video" controls playsinline></video>
+                <video id="main-video-p7-2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6%20().mp4" class="product-video" controls playsinline style="display:none;"></video>
+            </div>
+
+            <div class="thumbs-grid">
+                <div class="thumb-box active" id="thumb-p7-1" onclick="showMediaP7(1)">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4" muted playsinline></video>
+                </div>
+                <div class="thumb-box" id="thumb-p7-2" onclick="showMediaP7(2)">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6%20().mp4" muted playsinline></video>
+                </div>
             </div>
 
             <div>
@@ -609,6 +630,10 @@ PINK RUNTZ 🍇🍌</div>
             <div class="pricing-grid">
                 <div class="price-box"><span class="weight">1g</span><span class="amount">15 €</span></div>
                 <div class="price-box"><span class="weight">5g</span><span class="amount">60 €</span></div>
+                <div class="price-box"><span class="weight">10g</span><span class="amount">90 €</span></div>
+                <div class="price-box"><span class="weight">25g</span><span class="amount">160 €</span></div>
+                <div class="price-box"><span class="weight">50g</span><span class="amount">260 €</span></div>
+                <div class="price-box"><span class="weight">100g</span><span class="amount">480 €</span></div>
             </div>
 
             <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
@@ -748,6 +773,48 @@ PINK RUNTZ 🍇🍌</div>
             } else if(index === 3) {
                 v3.style.display = 'block';
                 t3.classList.add('active');
+            }
+        }
+
+        // Bascule multi-vidéos pour le Produit 6 (Olivette)
+        function showMediaP6(index) {
+            const v1 = document.getElementById('main-video-p6-1');
+            const v2 = document.getElementById('main-video-p6-2');
+            const t1 = document.getElementById('thumb-p6-1');
+            const t2 = document.getElementById('thumb-p6-2');
+
+            v1.style.display = 'none'; v1.pause();
+            v2.style.display = 'none'; v2.pause();
+            t1.classList.remove('active');
+            t2.classList.remove('active');
+
+            if(index === 1) {
+                v1.style.display = 'block';
+                t1.classList.add('active');
+            } else if(index === 2) {
+                v2.style.display = 'block';
+                t2.classList.add('active');
+            }
+        }
+
+        // Bascule multi-vidéos pour le Produit 7 (CaliMousse)
+        function showMediaP7(index) {
+            const v1 = document.getElementById('main-video-p7-1');
+            const v2 = document.getElementById('main-video-p7-2');
+            const t1 = document.getElementById('thumb-p7-1');
+            const t2 = document.getElementById('thumb-p7-2');
+
+            v1.style.display = 'none'; v1.pause();
+            v2.style.display = 'none'; v2.pause();
+            t1.classList.remove('active');
+            t2.classList.remove('active');
+
+            if(index === 1) {
+                v1.style.display = 'block';
+                t1.classList.add('active');
+            } else if(index === 2) {
+                v2.style.display = 'block';
+                t2.classList.add('active');
             }
         }
 
