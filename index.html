@@ -159,31 +159,6 @@
             border-radius: 12px;
             display: block;
         }
-        /* Miniatures côte à côte en bas */
-        .thumbs-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 5px;
-        }
-        .thumb-box {
-            background: #1c1c1e;
-            border: 2px solid #333;
-            border-radius: 10px;
-            overflow: hidden;
-            cursor: pointer;
-            height: 70px;
-            position: relative;
-        }
-        .thumb-box.active {
-            border-color: #ff9900;
-        }
-        .thumb-box img, .thumb-box video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         .product-title {
             font-weight: bold;
             font-size: 20px;
@@ -346,7 +321,7 @@
         </div>
 
         <div class="catalog-grid">
-            <!-- Produit 1 : Dry No Farm -->
+            <!-- Produit 1 -->
             <div class="catalog-item" onclick="switchPage('produit-1')">
                 <img src="IMG_6179.jpeg" alt="Dry No Farm" class="catalog-img">
                 <div>
@@ -356,7 +331,7 @@
                 <div class="catalog-price">À partir de 10 €</div>
             </div>
 
-            <!-- Produit 2 : No Farm -->
+            <!-- Produit 2 -->
             <div class="catalog-item" onclick="switchPage('produit-2')">
                 <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="No Farm" class="catalog-img">
                 <div>
@@ -366,7 +341,7 @@
                 <div class="catalog-price">À partir de 10 €</div>
             </div>
 
-            <!-- Produit 3 : Dry 90u/220u -->
+            <!-- Produit 3 -->
             <div class="catalog-item" onclick="switchPage('produit-3')">
                 <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4#t=1" class="catalog-img" muted preload="metadata"></video>
                 <div>
@@ -376,7 +351,7 @@
                 <div class="catalog-price">À partir de 15 €</div>
             </div>
 
-            <!-- Produit 4 : Dry 90u Prenium -->
+            <!-- Produit 4 -->
             <div class="catalog-item" onclick="switchPage('produit-4')">
                 <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4#t=1" class="catalog-img" muted preload="metadata"></video>
                 <div>
@@ -386,28 +361,37 @@
                 <div class="catalog-price">À partir de 13 €</div>
             </div>
 
-            <!-- Produit 5 : Dry 90u Prenium -->
+            <!-- Produit 5 -->
             <div class="catalog-item" onclick="switchPage('produit-5')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%205%20(%20pink%20runtz).mp4#t=1" class="catalog-img" muted preload="metadata"></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4#t=1" class="catalog-img" muted preload="metadata"></video>
                 <div>
-                    <div class="catalog-name">Dry 90u Prenium ✅</div>
-                    <div class="catalog-sub">Wilz Farmz 🧪👨‍🔬</div>
+                    <div class="catalog-name">Olivette 🫒🍫</div>
+                    <div class="catalog-sub">STATIC PLASMA 💫✨</div>
                 </div>
-                <div class="catalog-price">À partir de 12 €</div>
+                <div class="catalog-price">À partir de 20 €</div>
+            </div>
+
+            <!-- Produit 6 -->
+            <div class="catalog-item" onclick="switchPage('produit-6')">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4#t=1" class="catalog-img" muted preload="metadata"></video>
+                <div>
+                    <div class="catalog-name">Monster CaliMousse 🧽🇺🇸</div>
+                    <div class="catalog-sub">Summer Édition ☄️</div>
+                </div>
+                <div class="catalog-price">À partir de 15 €</div>
             </div>
         </div>
     </div>
 
-    <!-- SOUS-PAGE 1 : DÉTAIL PRODUIT 1 -->
+    <!-- SOUS-PAGE 1 : PRODUIT 1 -->
     <div id="page-produit-1" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
-            <img src="IMG_6179.jpeg" alt="Dry No Farm - Mimosa" class="product-img">
+            <img src="IMG_6179.jpeg" alt="Dry No Farm" class="product-img">
             <div>
                 <div class="product-title">Dry No Farm</div>
                 <div class="product-desc">Mimosa 🍋🍋‍🟩</div>
             </div>
-            
             <div class="pricing-grid">
                 <div class="price-box"><span class="weight">1g</span><span class="amount">10 €</span></div>
                 <div class="price-box"><span class="weight">5g</span><span class="amount">50 €</span></div>
@@ -416,35 +400,19 @@
                 <div class="price-box"><span class="weight">50g</span><span class="amount">280 €</span></div>
                 <div class="price-box"><span class="weight">100g</span><span class="amount">520 €</span></div>
             </div>
-
             <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
         </div>
     </div>
 
-    <!-- SOUS-PAGE 2 : DÉTAIL PRODUIT 2 -->
+    <!-- SOUS-PAGE 2 : PRODUIT 2 -->
     <div id="page-produit-2" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
-            
-            <div class="main-media-container">
-                <video id="main-video-p2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produits%201.mp4" class="product-video" controls playsinline></video>
-                <img id="main-img-p2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="No Farm G-13" class="product-img" style="display: none;">
-            </div>
-
-            <div class="thumbs-grid">
-                <div class="thumb-box active" id="thumb-video-p2" onclick="showMediaP2('video')">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produits%201.mp4" muted playsinline></video>
-                </div>
-                <div class="thumb-box" id="thumb-img-p2" onclick="showMediaP2('image')">
-                    <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="Miniature photo">
-                </div>
-            </div>
-
+            <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="No Farm" class="product-img">
             <div>
                 <div class="product-title">No Farm</div>
                 <div class="product-desc">G-13 🥦</div>
             </div>
-            
             <div class="pricing-grid">
                 <div class="price-box"><span class="weight">1g</span><span class="amount">10 €</span></div>
                 <div class="price-box"><span class="weight">5g</span><span class="amount">50 €</span></div>
@@ -452,99 +420,98 @@
                 <div class="price-box"><span class="weight">25g</span><span class="amount">190 €</span></div>
                 <div class="price-box"><span class="weight">50g</span><span class="amount">360 €</span></div>
             </div>
-
             <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
         </div>
     </div>
 
-    <!-- SOUS-PAGE 3 : DÉTAIL PRODUIT 3 -->
+    <!-- SOUS-PAGE 3 : PRODUIT 3 -->
     <div id="page-produit-3" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
-            
             <div class="main-media-container">
                 <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4" class="product-video" controls playsinline></video>
             </div>
-
             <div>
                 <div class="product-title">Dry 90u/220u</div>
-                <div class="product-desc">SixStar ⭐️<br>BLUE DREAM MOUNTAIN IN LAANSSER🍭🍦 45% THC</div>
+                <div class="product-desc">SixStar ⭐️</div>
             </div>
-            
             <div class="pricing-grid">
                 <div class="price-box"><span class="weight">1g</span><span class="amount">15 €</span></div>
                 <div class="price-box"><span class="weight">5g</span><span class="amount">60 €</span></div>
                 <div class="price-box"><span class="weight">10g</span><span class="amount">90 €</span></div>
             </div>
-
             <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
         </div>
     </div>
 
-    <!-- SOUS-PAGE 4 : DÉTAIL PRODUIT 4 -->
+    <!-- SOUS-PAGE 4 : PRODUIT 4 -->
     <div id="page-produit-4" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
-            
             <div class="main-media-container">
-                <video id="main-video-p4-1" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4" class="product-video" controls playsinline></video>
-                <video id="main-video-p4-2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20lemon%20cherry)%20.mp4" class="product-video" controls playsinline style="display:none;"></video>
-                <video id="main-video-p4-3" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20banana%20).mp4" class="product-video" controls playsinline style="display:none;"></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4" class="product-video" controls playsinline></video>
             </div>
-
-            <div class="thumbs-grid" style="grid-template-columns: repeat(3, 1fr);">
-                <div class="thumb-box active" id="thumb-p4-1" onclick="showMediaP4(1)">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4" muted playsinline></video>
-                </div>
-                <div class="thumb-box" id="thumb-p4-2" onclick="showMediaP4(2)">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20lemon%20cherry)%20.mp4" muted playsinline></video>
-                </div>
-                <div class="thumb-box" id="thumb-p4-3" onclick="showMediaP4(3)">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20banana%20).mp4" muted playsinline></video>
-                </div>
-            </div>
-
             <div>
                 <div class="product-title">Dry 90u Prenium ✅</div>
-                <div class="product-desc">Wilz Farm 🧪👨‍🔬
-40% THC
-- GELATO33 🍭🍦
-- LEMON CHERRY 🍋🍒
-- BANANA PUNSH 🍌🍹</div>
+                <div class="product-desc">Wilz Farm 🧪👨‍🔬</div>
             </div>
-            
             <div class="pricing-grid">
                 <div class="price-box"><span class="weight">1g</span><span class="amount">13 €</span></div>
                 <div class="price-box"><span class="weight">5g</span><span class="amount">55 €</span></div>
                 <div class="price-box"><span class="weight">10g</span><span class="amount">85 €</span></div>
             </div>
-
             <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
         </div>
     </div>
 
-    <!-- SOUS-PAGE 5 : DÉTAIL PRODUIT 5 -->
+    <!-- SOUS-PAGE 5 : PRODUIT 5 (Olivette) -->
     <div id="page-produit-5" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
-            
             <div class="main-media-container">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%205%20(%20pink%20runtz).mp4" class="product-video" controls playsinline></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4" class="product-video" controls playsinline></video>
             </div>
-
             <div>
-                <div class="product-title">Dry 90u Prenium ✅</div>
-                <div class="product-desc">Wilz Farmz 🧪👨‍🔬
-39% THC
-PINK RUNTZ 🍇🍌</div>
-            </div>
-            
-            <div class="pricing-grid">
-                <div class="price-box"><span class="weight">1g</span><span class="amount">12 €</span></div>
-                <div class="price-box"><span class="weight">5g</span><span class="amount">50 €</span></div>
-                <div class="price-box"><span class="weight">10g</span><span class="amount">80 €</span></div>
-            </div>
+                <div class="product-title">Olivette 🫒🍫</div>
+                <div class="product-desc">STATIC PLASMA 💫✨🇺🇸
 
+-Banana Zkittles🍬🍌
+-Mymosa Runtz🍭</div>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-box"><span class="weight">1g</span><span class="amount">20 €</span></div>
+                <div class="price-box"><span class="weight">5g</span><span class="amount">90 €</span></div>
+                <div class="price-box"><span class="weight">10g</span><span class="amount">180 €</span></div>
+            </div>
+            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
+        </div>
+    </div>
+
+    <!-- SOUS-PAGE 6 : PRODUIT 6 (Monster CaliMousse) -->
+    <div id="page-produit-6" class="page">
+        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
+        <div class="product-card">
+            <div class="main-media-container">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4" class="product-video" controls playsinline></video>
+            </div>
+            <div>
+                <div class="product-title">Monster CaliMousse 🧽🇺🇸</div>
+                <div class="product-desc">Summer Édition ☄️
+
+- IceCream Cake🍰
+- IceCream Pie🧁
+- Oreoz🍩
+- Papaya🍉🥭
+- Runtz🍬🍭</div>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-box"><span class="weight">1g</span><span class="amount">15 €</span></div>
+                <div class="price-box"><span class="weight">5g</span><span class="amount">60 €</span></div>
+                <div class="price-box"><span class="weight">10g</span><span class="amount">90 €</span></div>
+                <div class="price-box"><span class="weight">25g</span><span class="amount">160 €</span></div>
+                <div class="price-box"><span class="weight">50g</span><span class="amount">260 €</span></div>
+                <div class="price-box"><span class="weight">100g</span><span class="amount">480 €</span></div>
+            </div>
             <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
         </div>
     </div>
@@ -556,16 +523,11 @@ PINK RUNTZ 🍇🍌</div>
             <h2>Avis clients</h2>
             <div class="divider"></div>
         </div>
-
         <div class="content-card">
             <h3>Laisser un avis</h3>
             <p id="welcome-user-avis" style="margin-bottom: 10px; color: #fff; font-weight: 500;">Bienvenue</p>
             <textarea id="avis-text" placeholder="Partagez votre expérience..." style="width:100%; height:80px; background:#1c1c1e; border:1px solid #333; border-radius:8px; color:#fff; padding:10px; box-sizing:border-box; resize:none;"></textarea>
-            <div style="display:flex; justify-content:space-between; font-size:11px; color:#666; margin:5px 0 12px 0;">
-                <span>0/500</span>
-                <span>REDIRIGÉ VERS LE CANAL</span>
-            </div>
-            <button onclick="envoyerAvis()" style="width:100%; background:linear-gradient(90deg, #ff9900, #ffc107); border:none; border-radius:10px; padding:12px; font-weight:bold; color:#000; cursor:pointer;">ENVOYER</button>
+            <button onclick="envoyerAvis()" style="width:100%; background:linear-gradient(90deg, #ff9900, #ffc107); border:none; border-radius:10px; padding:12px; font-weight:bold; color:#000; cursor:pointer; margin-top:10px;">ENVOYER</button>
         </div>
     </div>
 
@@ -575,9 +537,7 @@ PINK RUNTZ 🍇🍌</div>
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">L'art du service</div>
             <h2>Services</h2>
             <div class="divider"></div>
-            <p style="color:#888; font-size:13px;">Deux manières de recevoir votre commande.</p>
         </div>
-
         <div class="content-card">
             <h3>I • Livraison</h3>
             <p>Livraison dans la zone ST-OMER & ALENTOURS (62)</p>
@@ -594,34 +554,22 @@ PINK RUNTZ 🍇🍌</div>
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Restons en lien</div>
             <h2>Contact</h2>
             <div class="divider"></div>
-            <p style="color:#888; font-size:13px;">Choisissez votre canal de prédilection.</p>
         </div>
-
         <a href="https://t.me/+xwwz5S_q-9hhZjY0" target="_blank" class="home-link-row" style="background:#141414; border:1px solid #333; margin-bottom:12px;">
-            <strong>Canal Telegram</strong><br><span style="font-size:11px; color:#888;">OUVRE DANS UNE NOUVELLE FENÊTRE</span>
+            <strong>Canal Telegram</strong>
         </a>
         <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="home-link-row" style="background:#141414; border:1px solid #333; margin-bottom:12px;">
-            <strong>Snapchat (commande)</strong><br><span style="font-size:11px; color:#888;">OUVRE DANS UNE NOUVELLE FENÊTRE</span>
+            <strong>Snapchat (commande)</strong>
         </a>
     </div>
 
-    <!-- BARRE DE NAVIGATION FIXE EN BAS -->
+    <!-- BARRE DE NAVIGATION -->
     <nav class="bottom-nav">
-        <button class="nav-item active" onclick="switchPage('maison')" id="nav-maison">
-            <span>🏠</span>Maison
-        </button>
-        <button class="nav-item" onclick="switchPage('catalogue')" id="nav-catalogue">
-            <span>🛍️</span>Catalogue
-        </button>
-        <button class="nav-item" onclick="switchPage('avis')" id="nav-avis">
-            <span>⭐</span>Avis
-        </button>
-        <button class="nav-item" onclick="switchPage('services')" id="nav-services">
-            <span>🚚</span>Services
-        </button>
-        <button class="nav-item" onclick="switchPage('contact')" id="nav-contact">
-            <span>💬</span>Contact
-        </button>
+        <button class="nav-item active" onclick="switchPage('maison')" id="nav-maison"><span>🏠</span>Maison</button>
+        <button class="nav-item" onclick="switchPage('catalogue')" id="nav-catalogue"><span>🛍️</span>Catalogue</button>
+        <button class="nav-item" onclick="switchPage('avis')" id="nav-avis"><span>⭐</span>Avis</button>
+        <button class="nav-item" onclick="switchPage('services')" id="nav-services"><span>🚚</span>Services</button>
+        <button class="nav-item" onclick="switchPage('contact')" id="nav-contact"><span>💬</span>Contact</button>
     </nav>
 
     <script>
@@ -630,59 +578,9 @@ PINK RUNTZ 🍇🍌</div>
         tg.expand();
 
         let currentUserName = "Client";
-
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
             currentUserName = tg.initDataUnsafe.user.first_name;
             document.getElementById('welcome-user-avis').innerText = `Bienvenue, ${currentUserName}`;
-        }
-
-        // Bascule média pour le Produit 2
-        function showMediaP2(type) {
-            const videoElem = document.getElementById('main-video-p2');
-            const imgElem = document.getElementById('main-img-p2');
-            const thumbVideo = document.getElementById('thumb-video-p2');
-            const thumbImg = document.getElementById('thumb-img-p2');
-
-            if (type === 'video') {
-                videoElem.style.display = 'block';
-                imgElem.style.display = 'none';
-                thumbVideo.classList.add('active');
-                thumbImg.classList.remove('active');
-            } else {
-                videoElem.style.display = 'none';
-                imgElem.style.display = 'block';
-                videoElem.pause();
-                thumbImg.classList.add('active');
-                thumbVideo.classList.remove('active');
-            }
-        }
-
-        // Bascule multi-vidéos pour le Produit 4
-        function showMediaP4(index) {
-            const v1 = document.getElementById('main-video-p4-1');
-            const v2 = document.getElementById('main-video-p4-2');
-            const v3 = document.getElementById('main-video-p4-3');
-            const t1 = document.getElementById('thumb-p4-1');
-            const t2 = document.getElementById('thumb-p4-2');
-            const t3 = document.getElementById('thumb-p4-3');
-
-            v1.style.display = 'none'; v1.pause();
-            v2.style.display = 'none'; v2.pause();
-            v3.style.display = 'none'; v3.pause();
-            t1.classList.remove('active');
-            t2.classList.remove('active');
-            t3.classList.remove('active');
-
-            if(index === 1) {
-                v1.style.display = 'block';
-                t1.classList.add('active');
-            } else if(index === 2) {
-                v2.style.display = 'block';
-                t2.classList.add('active');
-            } else if(index === 3) {
-                v3.style.display = 'block';
-                t3.classList.add('active');
-            }
         }
 
         function envoyerAvis() {
@@ -711,7 +609,6 @@ PINK RUNTZ 🍇🍌</div>
                 const activeNav = document.getElementById('nav-' + pageId);
                 if(activeNav) activeNav.classList.add('active');
             }
-
             window.scrollTo(0, 0);
         }
     </script>
