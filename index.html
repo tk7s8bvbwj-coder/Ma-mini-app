@@ -112,6 +112,7 @@
             object-fit: cover;
             border-radius: 10px;
             margin-bottom: 8px;
+            background: #000;
         }
         .catalog-name {
             font-weight: bold;
@@ -151,6 +152,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-bottom: 5px;
         }
         .product-img, .product-video {
             width: 100%;
@@ -343,7 +345,7 @@
 
             <!-- Produit 3 -->
             <div class="catalog-item" onclick="switchPage('produit-3')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4#t=1" class="catalog-img" muted preload="metadata"></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4#t=1" class="catalog-img" muted preload="metadata" playsinline></video>
                 <div>
                     <div class="catalog-name">Dry 90u/220u</div>
                     <div class="catalog-sub">SixStar ⭐️</div>
@@ -353,7 +355,7 @@
 
             <!-- Produit 4 -->
             <div class="catalog-item" onclick="switchPage('produit-4')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4#t=1" class="catalog-img" muted preload="metadata"></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4#t=1" class="catalog-img" muted preload="metadata" playsinline></video>
                 <div>
                     <div class="catalog-name">Dry 90u Prenium ✅</div>
                     <div class="catalog-sub">Wilz Farm 🧪👨‍🔬</div>
@@ -361,7 +363,7 @@
                 <div class="catalog-price">À partir de 13 €</div>
             </div>
 
-            <!-- Produit 5 (Ajouté de retour - Wilz Farm Gelato/Pink Runtz) -->
+            <!-- Produit 5 -->
             <div class="catalog-item" onclick="switchPage('produit-5')">
                 <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6298.jpeg" alt="Dry 90u Prenium" class="catalog-img">
                 <div>
@@ -371,9 +373,9 @@
                 <div class="catalog-price">À partir de 12 €</div>
             </div>
 
-            <!-- Produit 6 (Olivette) -->
+            <!-- Produit 6 -->
             <div class="catalog-item" onclick="switchPage('produit-6')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4#t=1" class="catalog-img" muted preload="metadata"></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4#t=1" class="catalog-img" muted preload="metadata" playsinline></video>
                 <div>
                     <div class="catalog-name">Olivette 🫒🍫</div>
                     <div class="catalog-sub">STATIC PLASMA 💫✨</div>
@@ -381,9 +383,9 @@
                 <div class="catalog-price">À partir de 20 €</div>
             </div>
 
-            <!-- Produit 7 (Monster CaliMousse) -->
+            <!-- Produit 7 -->
             <div class="catalog-item" onclick="switchPage('produit-7')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4#t=1" class="catalog-img" muted preload="metadata"></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4#t=1" class="catalog-img" muted preload="metadata" playsinline></video>
                 <div>
                     <div class="catalog-name">Monster CaliMousse 🧽🇺🇸</div>
                     <div class="catalog-sub">Summer Édition ☄️</div>
@@ -444,7 +446,7 @@
             <div>
                 <div class="product-title">Dry 90u/220u</div>
                 <div class="product-desc">SixStar ⭐️
-BLUE DREAM MOUNTAIN IN LAANSSERq 🍦 45% THC</div>
+BLUE DREAM MOUNTAIN IN LAANSSER 🍦 45% THC</div>
             </div>
             <div class="pricing-grid">
                 <div class="price-box"><span class="weight">1g</span><span class="amount">15 €</span></div>
@@ -479,11 +481,13 @@ BLUE DREAM MOUNTAIN IN LAANSSERq 🍦 45% THC</div>
         </div>
     </div>
 
-    <!-- SOUS-PAGE 5 : PRODUIT 5 (Wilz Farm Pink Runtz vu sur tes photos) -->
+    <!-- SOUS-PAGE 5 : PRODUIT 5 (Avec sa vidéo principale intégrée) -->
     <div id="page-produit-5" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
-            <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6298.jpeg" alt="Dry 90u Prenium" class="product-img">
+            <div class="main-media-container">
+                <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6298.jpeg" alt="Dry 90u Prenium" class="product-img">
+            </div>
             <div>
                 <div class="product-title">Dry 90u Prenium ✅</div>
                 <div class="product-desc">Wilz Farmz 🧪👨‍🔬
@@ -499,7 +503,7 @@ PINK RUNTZ 🍇 🍌</div>
         </div>
     </div>
 
-    <!-- SOUS-PAGE 6 : PRODUIT 6 (Olivette) -->
+    <!-- SOUS-PAGE 6 : PRODUIT 6 (Olivette - Avec option de voir les vidéos) -->
     <div id="page-produit-6" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
@@ -510,8 +514,8 @@ PINK RUNTZ 🍇 🍌</div>
                 <div class="product-title">Olivette 🫒🍫</div>
                 <div class="product-desc">STATIC PLASMA 💫✨🇺🇸
 
--Banana Zkittles🍬🍌
--Mymosa Runtz🍭</div>
+- Banana Zkittles 🍬🍌
+- Mymosa Runtz 🍭</div>
             </div>
             <div class="pricing-grid">
                 <div class="price-box"><span class="weight">1g</span><span class="amount">20 €</span></div>
@@ -533,11 +537,11 @@ PINK RUNTZ 🍇 🍌</div>
                 <div class="product-title">Monster CaliMousse 🧽🇺🇸</div>
                 <div class="product-desc">Summer Édition ☄️
 
-- IceCream Cake🍰
-- IceCream Pie🧁
-- Oreoz🍩
-- Papaya🍉🥭
-- Runtz🍬🍭</div>
+- IceCream Cake 🍰
+- IceCream Pie 🧁
+- Oreoz 🍩
+- Papaya 🍉🥭
+- Runtz 🍬🍭</div>
             </div>
             <div class="pricing-grid">
                 <div class="price-box"><span class="weight">1g</span><span class="amount">15 €</span></div>
