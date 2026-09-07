@@ -161,6 +161,29 @@
             border-radius: 12px;
             display: block;
         }
+        /* Miniatures pour multi-vidéos */
+        .thumbnails-row {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+        .thumbnail-item {
+            width: 65px;
+            height: 65px;
+            border-radius: 8px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #333;
+            background: #000;
+            flex-shrink: 0;
+            transition: border-color 0.2s;
+        }
+        .thumbnail-item.active {
+            border-color: #ff9900;
+        }
+
         .product-title {
             font-weight: bold;
             font-size: 20px;
@@ -457,12 +480,17 @@ BLUE DREAM MOUNTAIN IN LAANSSER 🍦 45% THC</div>
         </div>
     </div>
 
-    <!-- SOUS-PAGE 4 : PRODUIT 4 -->
+    <!-- SOUS-PAGE 4 : PRODUIT 4 (3 Vidéos avec sélecteur miniature) -->
     <div id="page-produit-4" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
             <div class="main-media-container">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4" class="product-video" controls playsinline></video>
+                <video id="main-video-4" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4" class="product-video" controls playsinline></video>
+            </div>
+            <div class="thumbnails-row">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4" class="thumbnail-item active" onclick="changeVideo('4', 'https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4', this)" muted playsinline></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20lemon%20cherry)%20.mp4" class="thumbnail-item" onclick="changeVideo('4', 'https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20lemon%20cherry)%20.mp4', this)" muted playsinline></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20banana%20).mp4" class="thumbnail-item" onclick="changeVideo('4', 'https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20banana%20).mp4', this)" muted playsinline></video>
             </div>
             <div>
                 <div class="product-title">Dry 90u Prenium ✅</div>
@@ -503,15 +531,16 @@ PINK RUNTZ 🍇 🍌</div>
         </div>
     </div>
 
-    <!-- SOUS-PAGE 6 : PRODUIT 6 (Olivette - 2 Vidéos) -->
+    <!-- SOUS-PAGE 6 : PRODUIT 6 (Olivette - 2 Vidéos avec sélecteur miniature) -->
     <div id="page-produit-6" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
             <div class="main-media-container">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4" class="product-video" controls playsinline></video>
+                <video id="main-video-6" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4" class="product-video" controls playsinline></video>
             </div>
-            <div class="main-media-container">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5().mp4" class="product-video" controls playsinline></video>
+            <div class="thumbnails-row">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4" class="thumbnail-item active" onclick="changeVideo('6', 'https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4', this)" muted playsinline></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5().mp4" class="thumbnail-item" onclick="changeVideo('6', 'https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5().mp4', this)" muted playsinline></video>
             </div>
             <div>
                 <div class="product-title">Olivette 🫒🍫</div>
@@ -529,15 +558,16 @@ PINK RUNTZ 🍇 🍌</div>
         </div>
     </div>
 
-    <!-- SOUS-PAGE 7 : PRODUIT 7 (Monster CaliMousse - 2 Vidéos) -->
+    <!-- SOUS-PAGE 7 : PRODUIT 7 (Monster CaliMousse - 2 Vidéos avec sélecteur miniature) -->
     <div id="page-produit-7" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
             <div class="main-media-container">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4" class="product-video" controls playsinline></video>
+                <video id="main-video-7" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4" class="product-video" controls playsinline></video>
             </div>
-            <div class="main-media-container">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6%20().mp4" class="product-video" controls playsinline></video>
+            <div class="thumbnails-row">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4" class="thumbnail-item active" onclick="changeVideo('7', 'https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4', this)" muted playsinline></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6%20().mp4" class="thumbnail-item" onclick="changeVideo('7', 'https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6%20().mp4', this)" muted playsinline></video>
             </div>
             <div>
                 <div class="product-title">Monster CaliMousse 🧽🇺🇸</div>
@@ -626,6 +656,21 @@ PINK RUNTZ 🍇 🍌</div>
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
             currentUserName = tg.initDataUnsafe.user.first_name;
             document.getElementById('welcome-user-avis').innerText = `Bienvenue, ${currentUserName}`;
+        }
+
+        // Fonction pour changer la vidéo principale lorsqu'on clique sur une miniature
+        function changeVideo(productId, videoSrc, thumbnailElement) {
+            const mainVideo = document.getElementById('main-video-' + productId);
+            if (mainVideo) {
+                mainVideo.src = videoSrc;
+                mainVideo.load();
+                mainVideo.play().catch(e => console.log("Autoplay bloqué :", e));
+            }
+            // Gérer le style actif des miniatures dans la ligne
+            const container = thumbnailElement.parentElement;
+            const thumbs = container.querySelectorAll('.thumbnail-item');
+            thumbs.forEach(t => t.classList.remove('active'));
+            thumbnailElement.classList.add('active');
         }
 
         function envoyerAvis() {
