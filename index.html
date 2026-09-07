@@ -2,202 +2,342 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bendouz Industry</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
         body {
-            background-color: #0d0d0f;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #0b0b0b;
             color: #ffffff;
-            padding-bottom: 75px;
+            margin: 0;
+            padding: 15px;
+            padding-bottom: 90px;
+            box-sizing: border-box;
         }
-
         .page {
             display: none;
-            padding: 16px;
         }
-
         .page.active {
             display: block;
         }
-
-        /* En-têtes de pages */
-        .page-header {
+        header {
+            text-align: center;
             margin-bottom: 20px;
         }
-
-        .page-header h2 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-top: 4px;
-            letter-spacing: -0.5px;
+        .logo-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ff9900;
+            margin: 0;
+            letter-spacing: 1px;
         }
-
+        .logo-subtitle {
+            font-size: 13px;
+            color: #aaa;
+            margin-top: 5px;
+        }
         .divider {
+            width: 40px;
             height: 2px;
-            background: linear-gradient(90deg, #ff8800, transparent);
-            margin-top: 8px;
-            border-radius: 2px;
+            background-color: #ff9900;
+            margin: 10px auto 20px auto;
         }
-
-        /* Grille du catalogue d'origine */
+        .section-title {
+            text-align: center;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #666;
+            margin: 25px 0 15px 0;
+        }
+        /* Accueil */
+        .home-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .home-card-btn {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 14px;
+            padding: 20px 15px;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .home-card-btn span {
+            font-size: 22px;
+        }
+        .home-link-row {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 14px;
+            padding: 16px;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        /* Grille catalogue côte à côte */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
         }
-
         .catalog-item {
-            background: #16161a;
+            background: #141414;
+            border: 1px solid #222;
             border-radius: 14px;
             padding: 10px;
-            border: 1px solid #22222a;
+            text-align: center;
+            cursor: pointer;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            cursor: pointer;
-            transition: transform 0.1s ease, border-color 0.2s;
         }
-
-        .catalog-item:active {
-            transform: scale(0.97);
-            border-color: #ff8800;
-        }
-
         .catalog-img {
             width: 100%;
             height: 130px;
             object-fit: cover;
             border-radius: 10px;
             margin-bottom: 8px;
-            background: #000;
         }
-
-        /* Vidéo stylisée avec bouton Play au milieu */
-        .catalog-video-container {
-            position: relative;
-            width: 100%;
-            height: 130px;
-            margin-bottom: 8px;
-            border-radius: 10px;
-            overflow: hidden;
-            background: #000;
-        }
-
-        .catalog-video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .play-overlay-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 38px;
-            height: 38px;
-            background: rgba(0, 0, 0, 0.65);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 14px;
-            pointer-events: none;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(2px);
-        }
-
         .catalog-name {
-            font-size: 14px;
-            font-weight: 600;
+            font-weight: bold;
+            font-size: 15px;
             color: #fff;
             margin-bottom: 2px;
         }
-
         .catalog-sub {
-            font-size: 11px;
+            font-size: 12px;
             color: #888;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            white-space: pre-line;
         }
-
         .catalog-price {
             font-size: 13px;
-            font-weight: 700;
-            color: #ff8800;
+            font-weight: bold;
+            color: #ff9900;
         }
 
-        /* Barre de navigation fixe du bas */
+        /* Fiche Produit Détail */
+        .product-card {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .main-media-container {
+            width: 100%;
+            max-height: 260px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .product-img, .product-video {
+            width: 100%;
+            max-height: 260px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+        /* Miniatures côte à côte en bas */
+        .thumbs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .thumb-box {
+            background: #1c1c1e;
+            border: 2px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            height: 70px;
+            position: relative;
+        }
+        .thumb-box.active {
+            border-color: #ff9900;
+        }
+        .thumb-box img, .thumb-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-title {
+            font-weight: bold;
+            font-size: 20px;
+            color: #fff;
+            margin-top: 5px;
+        }
+        .product-desc {
+            font-size: 14px;
+            color: #aaa;
+            white-space: pre-line;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .price-box {
+            background: #1c1c1e;
+            border: 1px solid #2c2c2e;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+        }
+        .price-box .weight {
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            display: block;
+        }
+        .price-box .amount {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .btn-snap {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: #FFFC00;
+            color: #000000;
+            text-decoration: none;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        .btn-back {
+            background: #222;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        /* Pages Avis, Services, Contact */
+        .content-card {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+        .content-card h3 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #fff;
+        }
+        .content-card p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .page-header h2 {
+            font-size: 24px;
+            margin: 0;
+            color: #fff;
+        }
+        /* Barre de navigation fixe en bas */
         .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 60px;
-            background: #121215;
-            border-top: 1px solid #222228;
+            background: #111;
+            border-top: 1px solid #222;
             display: flex;
             justify-content: space-around;
-            align-items: center;
+            padding: 10px 0;
+            box-sizing: border-box;
             z-index: 1000;
         }
-
         .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            text-align: center;
             color: #777;
-            text-decoration: none;
             font-size: 10px;
-            font-weight: 500;
+            text-decoration: none;
+            background: none;
+            border: none;
             cursor: pointer;
-            transition: color 0.2s;
-            flex: 1;
         }
-
         .nav-item.active {
-            color: #ff8800;
+            color: #ff9900;
         }
-
-        .nav-item span.icon {
-            font-size: 20px;
+        .nav-item span {
+            font-size: 18px;
+            display: block;
             margin-bottom: 2px;
-        }
-
-        /* Styles additionnels des pages intérieures */
-        .content-card {
-            background: #16161a;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 12px;
-            border: 1px solid #22222a;
         }
     </style>
 </head>
 <body>
 
-    <!-- PAGE 1 : ACCUEIL -->
-    <div id="page-accueil" class="page active">
-        <div class="page-header">
-            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Bienvenue</div>
-            <h2>Bendouz Industry</h2>
+    <!-- PAGE 1 : MAISON (ACCUEIL) -->
+    <div id="page-maison" class="page active">
+        <header>
+            <div class="logo-title">BENDOUZ INDUSTRY</div>
             <div class="divider"></div>
+            <div class="logo-subtitle">Bendouz Industry • Le shop qui livre</div>
+            <div style="font-size: 12px; color: #666; margin-top: 6px;">Catalogue • Livraison • Click & Collect</div>
+        </header>
+
+        <div class="section-title">Le Shop</div>
+        <div class="home-grid">
+            <button class="home-card-btn" onclick="switchPage('catalogue')">
+                <span>🛍️</span> CATALOGUE
+            </button>
+            <button class="home-card-btn" onclick="switchPage('avis')">
+                <span>⭐</span> AVIS
+            </button>
+            <button class="home-card-btn" onclick="switchPage('services')">
+                <span>🚚</span> SERVICES
+            </button>
+            <button class="home-card-btn" onclick="switchPage('contact')">
+                <span>💬</span> CONTACT
+            </button>
         </div>
-        <div class="content-card">
-            <p style="color: #ccc; font-size: 14px; line-height: 1.5;">Bienvenue sur notre mini-application officielle. Utilise le catalogue ci-dessous pour découvrir l'ensemble de nos produits disponibles.</p>
-        </div>
+
+        <div class="section-title">Suivez-nous</div>
+        <a href="https://t.me/+xwwz5S_q-9hhZjY0" target="_blank" class="home-link-row">Canal Telegram</a>
+        <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="home-link-row">Snapchat (commande)</a>
     </div>
 
-    <!-- PAGE 2 : CATALOGUE -->
+    <!-- PAGE 2 : CATALOGUE (GRILLE CÔTE À CÔTE) -->
     <div id="page-catalogue" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">La Boutique</div>
@@ -206,7 +346,7 @@
         </div>
 
         <div class="catalog-grid">
-            <!-- Produit 1 -->
+            <!-- Produit 1 : Dry No Farm -->
             <div class="catalog-item" onclick="switchPage('produit-1')">
                 <img src="IMG_6179.jpeg" alt="Dry No Farm" class="catalog-img">
                 <div>
@@ -216,7 +356,7 @@
                 <div class="catalog-price">À partir de 10 €</div>
             </div>
 
-            <!-- Produit 2 -->
+            <!-- Produit 2 : No Farm -->
             <div class="catalog-item" onclick="switchPage('produit-2')">
                 <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="No Farm" class="catalog-img">
                 <div>
@@ -226,12 +366,9 @@
                 <div class="catalog-price">À partir de 10 €</div>
             </div>
 
-            <!-- Produit 3 -->
+            <!-- Produit 3 : Dry 90u/220u -->
             <div class="catalog-item" onclick="switchPage('produit-3')">
-                <div class="catalog-video-container">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4#t=0.5" preload="metadata" playsinline></video>
-                    <div class="play-overlay-icon">▶</div>
-                </div>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4#t=1" class="catalog-img" muted preload="metadata"></video>
                 <div>
                     <div class="catalog-name">Dry 90u/220u</div>
                     <div class="catalog-sub">SixStar ⭐️</div>
@@ -239,12 +376,9 @@
                 <div class="catalog-price">À partir de 15 €</div>
             </div>
 
-            <!-- Produit 4 -->
+            <!-- Produit 4 : Dry 90u Prenium -->
             <div class="catalog-item" onclick="switchPage('produit-4')">
-                <div class="catalog-video-container">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4#t=0.5" preload="metadata" playsinline></video>
-                    <div class="play-overlay-icon">▶</div>
-                </div>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4#t=1" class="catalog-img" muted preload="metadata"></video>
                 <div>
                     <div class="catalog-name">Dry 90u Prenium ✅</div>
                     <div class="catalog-sub">Wilz Farm 🧪👨‍🔬</div>
@@ -252,25 +386,19 @@
                 <div class="catalog-price">À partir de 13 €</div>
             </div>
 
-            <!-- Produit 5 -->
+            <!-- Produit 5 : Dry 90u Prenium -->
             <div class="catalog-item" onclick="switchPage('produit-5')">
-                <div class="catalog-video-container">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%205%20(%20pink%20runtz).mp4#t=0.5" preload="metadata" playsinline></video>
-                    <div class="play-overlay-icon">▶</div>
-                </div>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%205%20(%20pink%20runtz).mp4#t=1" class="catalog-img" muted preload="metadata"></video>
                 <div>
                     <div class="catalog-name">Dry 90u Prenium ✅</div>
-                    <div class="catalog-sub">Wilz Farm 🧪👨‍🔬</div>
+                    <div class="catalog-sub">Wilz Farmz 🧪👨‍🔬</div>
                 </div>
                 <div class="catalog-price">À partir de 12 €</div>
             </div>
 
-            <!-- Produit 6 (Olivette) -->
+            <!-- Produit 6 : Olivette -->
             <div class="catalog-item" onclick="switchPage('produit-6')">
-                <div class="catalog-video-container">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4#t=0.5" preload="metadata" playsinline></video>
-                    <div class="play-overlay-icon">▶</div>
-                </div>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4#t=1" class="catalog-img" muted preload="metadata"></video>
                 <div>
                     <div class="catalog-name">Olivette 🫒🍫</div>
                     <div class="catalog-sub">STATIC PLASMA 💫✨</div>
@@ -278,12 +406,9 @@
                 <div class="catalog-price">À partir de 20 €</div>
             </div>
 
-            <!-- Produit 7 (CaliMousse) -->
+            <!-- Produit 7 : Monster CaliMousse -->
             <div class="catalog-item" onclick="switchPage('produit-7')">
-                <div class="catalog-video-container">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4#t=0.5" preload="metadata" playsinline></video>
-                    <div class="play-overlay-icon">▶</div>
-                </div>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4#t=1" class="catalog-img" muted preload="metadata"></video>
                 <div>
                     <div class="catalog-name">Monster CaliMousse 🧽🇺🇸</div>
                     <div class="catalog-sub">Summer Édition ☄️</div>
@@ -293,147 +418,366 @@
         </div>
     </div>
 
+    <!-- SOUS-PAGE 1 : DÉTAIL PRODUIT 1 -->
+    <div id="page-produit-1" class="page">
+        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
+        <div class="product-card">
+            <img src="IMG_6179.jpeg" alt="Dry No Farm - Mimosa" class="product-img">
+            <div>
+                <div class="product-title">Dry No Farm</div>
+                <div class="product-desc">Mimosa 🍋🍋‍🟩</div>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="price-box"><span class="weight">1g</span><span class="amount">10 €</span></div>
+                <div class="price-box"><span class="weight">5g</span><span class="amount">50 €</span></div>
+                <div class="price-box"><span class="weight">10g</span><span class="amount">80 €</span></div>
+                <div class="price-box"><span class="weight">25g</span><span class="amount">170 €</span></div>
+                <div class="price-box"><span class="weight">50g</span><span class="amount">280 €</span></div>
+                <div class="price-box"><span class="weight">100g</span><span class="amount">520 €</span></div>
+            </div>
+
+            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
+        </div>
+    </div>
+
+    <!-- SOUS-PAGE 2 : DÉTAIL PRODUIT 2 -->
+    <div id="page-produit-2" class="page">
+        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
+        <div class="product-card">
+            
+            <div class="main-media-container">
+                <video id="main-video-p2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produits%201.mp4" class="product-video" controls playsinline></video>
+                <img id="main-img-p2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="No Farm G-13" class="product-img" style="display: none;">
+            </div>
+
+            <div class="thumbs-grid">
+                <div class="thumb-box active" id="thumb-video-p2" onclick="showMediaP2('video')">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produits%201.mp4" muted playsinline></video>
+                </div>
+                <div class="thumb-box" id="thumb-img-p2" onclick="showMediaP2('image')">
+                    <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="Miniature photo">
+                </div>
+            </div>
+
+            <div>
+                <div class="product-title">No Farm</div>
+                <div class="product-desc">G-13 🥦</div>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="price-box"><span class="weight">1g</span><span class="amount">10 €</span></div>
+                <div class="price-box"><span class="weight">5g</span><span class="amount">50 €</span></div>
+                <div class="price-box"><span class="weight">10g</span><span class="amount">80 €</span></div>
+                <div class="price-box"><span class="weight">25g</span><span class="amount">190 €</span></div>
+                <div class="price-box"><span class="weight">50g</span><span class="amount">360 €</span></div>
+            </div>
+
+            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
+        </div>
+    </div>
+
+    <!-- SOUS-PAGE 3 : DÉTAIL PRODUIT 3 -->
+    <div id="page-produit-3" class="page">
+        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
+        <div class="product-card">
+            
+            <div class="main-media-container">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4" class="product-video" controls playsinline></video>
+            </div>
+
+            <div>
+                <div class="product-title">Dry 90u/220u</div>
+                <div class="product-desc">SixStar ⭐️<br>BLUE DREAM MOUNTAIN IN LAANSSER🍭🍦 45% THC</div>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="price-box"><span class="weight">1g</span><span class="amount">15 €</span></div>
+                <div class="price-box"><span class="weight">5g</span><span class="amount">60 €</span></div>
+                <div class="price-box"><span class="weight">10g</span><span class="amount">90 €</span></div>
+            </div>
+
+            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
+        </div>
+    </div>
+
+    <!-- SOUS-PAGE 4 : DÉTAIL PRODUIT 4 -->
+    <div id="page-produit-4" class="page">
+        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
+        <div class="product-card">
+            
+            <div class="main-media-container">
+                <video id="main-video-p4-1" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4" class="product-video" controls playsinline></video>
+                <video id="main-video-p4-2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20lemon%20cherry)%20.mp4" class="product-video" controls playsinline style="display:none;"></video>
+                <video id="main-video-p4-3" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20banana%20).mp4" class="product-video" controls playsinline style="display:none;"></video>
+            </div>
+
+            <div class="thumbs-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="thumb-box active" id="thumb-p4-1" onclick="showMediaP4(1)">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4" muted playsinline></video>
+                </div>
+                <div class="thumb-box" id="thumb-p4-2" onclick="showMediaP4(2)">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20lemon%20cherry)%20.mp4" muted playsinline></video>
+                </div>
+                <div class="thumb-box" id="thumb-p4-3" onclick="showMediaP4(3)">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20banana%20).mp4" muted playsinline></video>
+                </div>
+            </div>
+
+            <div>
+                <div class="product-title">Dry 90u Prenium ✅</div>
+                <div class="product-desc">Wilz Farm 🧪👨‍🔬
+40% THC
+- GELATO33 🍭🍦
+- LEMON CHERRY 🍋🍒
+- BANANA PUNSH 🍌🍹</div>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="price-box"><span class="weight">1g</span><span class="amount">13 €</span></div>
+                <div class="price-box"><span class="weight">5g</span><span class="amount">55 €</span></div>
+                <div class="price-box"><span class="weight">10g</span><span class="amount">85 €</span></div>
+            </div>
+
+            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
+        </div>
+    </div>
+
+    <!-- SOUS-PAGE 5 : DÉTAIL PRODUIT 5 -->
+    <div id="page-produit-5" class="page">
+        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
+        <div class="product-card">
+            
+            <div class="main-media-container">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%205%20(%20pink%20runtz).mp4" class="product-video" controls playsinline></video>
+            </div>
+
+            <div>
+                <div class="product-title">Dry 90u Prenium ✅</div>
+                <div class="product-desc">Wilz Farmz 🧪👨‍🔬
+39% THC
+PINK RUNTZ 🍇🍌</div>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="price-box"><span class="weight">1g</span><span class="amount">12 €</span></div>
+                <div class="price-box"><span class="weight">5g</span><span class="amount">50 €</span></div>
+                <div class="price-box"><span class="weight">10g</span><span class="amount">80 €</span></div>
+            </div>
+
+            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
+        </div>
+    </div>
+
+    <!-- SOUS-PAGE 6 : DÉTAIL PRODUIT 6 (Olivette) -->
+    <div id="page-produit-6" class="page">
+        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
+        <div class="product-card">
+            
+            <div class="main-media-container">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4" class="product-video" controls playsinline></video>
+            </div>
+
+            <div>
+                <div class="product-title">Olivette 🫒🍫</div>
+                <div class="product-desc">STATIC PLASMA 💫✨</div>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="price-box"><span class="weight">1g</span><span class="amount">20 €</span></div>
+                <div class="price-box"><span class="weight">5g</span><span class="amount">90 €</span></div>
+            </div>
+
+            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
+        </div>
+    </div>
+
+    <!-- SOUS-PAGE 7 : DÉTAIL PRODUIT 7 (Monster CaliMousse) -->
+    <div id="page-produit-7" class="page">
+        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
+        <div class="product-card">
+            
+            <div class="main-media-container">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4" class="product-video" controls playsinline></video>
+            </div>
+
+            <div>
+                <div class="product-title">Monster CaliMousse 🧽🇺🇸</div>
+                <div class="product-desc">Summer Édition ☄️</div>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="price-box"><span class="weight">1g</span><span class="amount">15 €</span></div>
+                <div class="price-box"><span class="weight">5g</span><span class="amount">60 €</span></div>
+            </div>
+
+            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
+        </div>
+    </div>
+
     <!-- PAGE 3 : AVIS -->
     <div id="page-avis" class="page">
         <div class="page-header">
-            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Retours</div>
-            <h2>Avis</h2>
+            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">La Maison</div>
+            <h2>Avis clients</h2>
             <div class="divider"></div>
         </div>
+
         <div class="content-card">
-            <p style="color: #ccc; font-size: 14px;">Découvre tous les retours et avis de nos clients satisfaits.</p>
+            <h3>Laisser un avis</h3>
+            <p id="welcome-user-avis" style="margin-bottom: 10px; color: #fff; font-weight: 500;">Bienvenue</p>
+            <textarea id="avis-text" placeholder="Partagez votre expérience..." style="width:100%; height:80px; background:#1c1c1e; border:1px solid #333; border-radius:8px; color:#fff; padding:10px; box-sizing:border-box; resize:none;"></textarea>
+            <div style="display:flex; justify-content:space-between; font-size:11px; color:#666; margin:5px 0 12px 0;">
+                <span>0/500</span>
+                <span>REDIRIGÉ VERS LE CANAL</span>
+            </div>
+            <button onclick="envoyerAvis()" style="width:100%; background:linear-gradient(90deg, #ff9900, #ffc107); border:none; border-radius:10px; padding:12px; font-weight:bold; color:#000; cursor:pointer;">ENVOYER</button>
         </div>
     </div>
 
     <!-- PAGE 4 : SERVICES -->
     <div id="page-services" class="page">
         <div class="page-header">
-            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Informations</div>
+            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">L'art du service</div>
             <h2>Services</h2>
             <div class="divider"></div>
+            <p style="color:#888; font-size:13px;">Deux manières de recevoir votre commande.</p>
+        </div>
+
+        <div class="content-card">
+            <h3>I • Livraison</h3>
+            <p>Livraison dans la zone ST-OMER & ALENTOURS (62)</p>
         </div>
         <div class="content-card">
-            <p style="color: #ccc; font-size: 14px;">Consulte nos options de livraison et nos conditions de service.</p>
+            <h3>II • Sur place</h3>
+            <p>Commandez en ligne, retirez sur place à St-Omer aux horaires d'ouverture.</p>
         </div>
     </div>
 
     <!-- PAGE 5 : CONTACT -->
     <div id="page-contact" class="page">
         <div class="page-header">
-            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Support</div>
+            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Restons en lien</div>
             <h2>Contact</h2>
             <div class="divider"></div>
+            <p style="color:#888; font-size:13px;">Choisissez votre canal de prédilection.</p>
         </div>
-        <div class="content-card">
-            <p style="color: #ccc; font-size: 14px;">Contacte notre support officiel en cas de besoin.</p>
-        </div>
+
+        <a href="https://t.me/+xwwz5S_q-9hhZjY0" target="_blank" class="home-link-row" style="background:#141414; border:1px solid #333; margin-bottom:12px;">
+            <strong>Canal Telegram</strong><br><span style="font-size:11px; color:#888;">OUVRE DANS UNE NOUVELLE FENÊTRE</span>
+        </a>
+        <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="home-link-row" style="background:#141414; border:1px solid #333; margin-bottom:12px;">
+            <strong>Snapchat (commande)</strong><br><span style="font-size:11px; color:#888;">OUVRE DANS UNE NOUVELLE FENÊTRE</span>
+        </a>
     </div>
 
-    <!-- PAGES DE DETAILS PRODUITS -->
-    <div id="page-produit-1" class="page">
-        <div class="page-header">
-            <div onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 13px; font-weight: 600; margin-bottom: 6px;">← Retour Catalogue</div>
-            <h2>Dry No Farm</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="content-card"><p style="color: #aaa;">Détails complets du produit...</p></div>
-    </div>
-
-    <div id="page-produit-2" class="page">
-        <div class="page-header">
-            <div onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 13px; font-weight: 600; margin-bottom: 6px;">← Retour Catalogue</div>
-            <h2>No Farm</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="content-card"><p style="color: #aaa;">Détails complets du produit...</p></div>
-    </div>
-
-    <div id="page-produit-3" class="page">
-        <div class="page-header">
-            <div onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 13px; font-weight: 600; margin-bottom: 6px;">← Retour Catalogue</div>
-            <h2>Dry 90u/220u</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="content-card"><p style="color: #aaa;">Détails complets du produit...</p></div>
-    </div>
-
-    <div id="page-produit-4" class="page">
-        <div class="page-header">
-            <div onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 13px; font-weight: 600; margin-bottom: 6px;">← Retour Catalogue</div>
-            <h2>Dry 90u Prenium ✅</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="content-card"><p style="color: #aaa;">Détails complets du produit...</p></div>
-    </div>
-
-    <div id="page-produit-5" class="page">
-        <div class="page-header">
-            <div onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 13px; font-weight: 600; margin-bottom: 6px;">← Retour Catalogue</div>
-            <h2>Dry 90u Prenium ✅</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="content-card"><p style="color: #aaa;">Détails complets du produit...</p></div>
-    </div>
-
-    <div id="page-produit-6" class="page">
-        <div class="page-header">
-            <div onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 13px; font-weight: 600; margin-bottom: 6px;">← Retour Catalogue</div>
-            <h2>Olivette 🫒🍫</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="content-card"><p style="color: #aaa;">Détails complets du produit...</p></div>
-    </div>
-
-    <div id="page-produit-7" class="page">
-        <div class="page-header">
-            <div onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 13px; font-weight: 600; margin-bottom: 6px;">← Retour Catalogue</div>
-            <h2>Monster CaliMousse 🧽🇺🇸</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="content-card"><p style="color: #aaa;">Détails complets du produit...</p></div>
-    </div>
-
-    <!-- BARRE DE NAVIGATION INFÉRIEURE -->
+    <!-- BARRE DE NAVIGATION FIXE EN BAS -->
     <nav class="bottom-nav">
-        <div class="nav-item active" onclick="switchPage('accueil', this)">
-            <span class="icon">🏠</span>
-            <span>Maison</span>
-        </div>
-        <div class="nav-item" onclick="switchPage('catalogue', this)">
-            <span class="icon">🛍️</span>
-            <span>Catalogue</span>
-        </div>
-        <div class="nav-item" onclick="switchPage('avis', this)">
-            <span class="icon">⭐</span>
-            <span>Avis</span>
-        </div>
-        <div class="nav-item" onclick="switchPage('services', this)">
-            <span class="icon">🚚</span>
-            <span>Services</span>
-        </div>
-        <div class="nav-item" onclick="switchPage('contact', this)">
-            <span class="icon">💬</span>
-            <span>Contact</span>
-        </div>
+        <button class="nav-item active" onclick="switchPage('maison')" id="nav-maison">
+            <span>🏠</span>Maison
+        </button>
+        <button class="nav-item" onclick="switchPage('catalogue')" id="nav-catalogue">
+            <span>🛍️</span>Catalogue
+        </button>
+        <button class="nav-item" onclick="switchPage('avis')" id="nav-avis">
+            <span>⭐</span>Avis
+        </button>
+        <button class="nav-item" onclick="switchPage('services')" id="nav-services">
+            <span>🚚</span>Services
+        </button>
+        <button class="nav-item" onclick="switchPage('contact')" id="nav-contact">
+            <span>💬</span>Contact
+        </button>
     </nav>
 
     <script>
-        function switchPage(pageId, element) {
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+
+        let currentUserName = "Client";
+
+        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+            currentUserName = tg.initDataUnsafe.user.first_name;
+            document.getElementById('welcome-user-avis').innerText = `Bienvenue, ${currentUserName}`;
+        }
+
+        // Bascule média pour le Produit 2
+        function showMediaP2(type) {
+            const videoElem = document.getElementById('main-video-p2');
+            const imgElem = document.getElementById('main-img-p2');
+            const thumbVideo = document.getElementById('thumb-video-p2');
+            const thumbImg = document.getElementById('thumb-img-p2');
+
+            if (type === 'video') {
+                videoElem.style.display = 'block';
+                imgElem.style.display = 'none';
+                thumbVideo.classList.add('active');
+                thumbImg.classList.remove('active');
+            } else {
+                videoElem.style.display = 'none';
+                imgElem.style.display = 'block';
+                videoElem.pause();
+                thumbImg.classList.add('active');
+                thumbVideo.classList.remove('active');
+            }
+        }
+
+        // Bascule multi-vidéos pour le Produit 4
+        function showMediaP4(index) {
+            const v1 = document.getElementById('main-video-p4-1');
+            const v2 = document.getElementById('main-video-p4-2');
+            const v3 = document.getElementById('main-video-p4-3');
+            const t1 = document.getElementById('thumb-p4-1');
+            const t2 = document.getElementById('thumb-p4-2');
+            const t3 = document.getElementById('thumb-p4-3');
+
+            v1.style.display = 'none'; v1.pause();
+            v2.style.display = 'none'; v2.pause();
+            v3.style.display = 'none'; v3.pause();
+            t1.classList.remove('active');
+            t2.classList.remove('active');
+            t3.classList.remove('active');
+
+            if(index === 1) {
+                v1.style.display = 'block';
+                t1.classList.add('active');
+            } else if(index === 2) {
+                v2.style.display = 'block';
+                t2.classList.add('active');
+            } else if(index === 3) {
+                v3.style.display = 'block';
+                t3.classList.add('active');
+            }
+        }
+
+        function envoyerAvis() {
+            const texteAvis = document.getElementById('avis-text').value.trim();
+            if(!texteAvis) {
+                alert("Veuillez écrire un avis avant d'envoyer.");
+                return;
+            }
+            const messageFinal = `💬 Nouvel avis de ${currentUserName} :\n\n"${texteAvis}"`;
+            const urlTelegram = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/+3FMT2erV1JgxZTM0')}&text=${encodeURIComponent(messageFinal)}`;
+            window.open(urlTelegram, '_blank');
+        }
+
+        function switchPage(pageId) {
             const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
+            pages.forEach(p => p.classList.remove('active'));
 
-            const targetPageId = pageId.startsWith('page-') ? pageId : 'page-' + pageId;
-            const targetPage = document.getElementById(targetPageId);
-            if (targetPage) {
-                targetPage.classList.add('active');
-            }
+            document.getElementById('page-' + pageId).classList.add('active');
 
-            if (element && element.classList.contains('nav-item')) {
-                const navItems = document.querySelectorAll('.nav-item');
-                navItems.forEach(item => item.classList.remove('active'));
-                element.classList.add('active');
-            }
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(n => n.classList.remove('active'));
             
+            if(pageId.startsWith('produit-')) {
+                document.getElementById('nav-catalogue').classList.add('active');
+            } else {
+                const activeNav = document.getElementById('nav-' + pageId);
+                if(activeNav) activeNav.classList.add('active');
+            }
+
             window.scrollTo(0, 0);
         }
     </script>
