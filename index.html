@@ -159,24 +159,29 @@
             border-radius: 12px;
             display: block;
         }
-        /* Miniatures côte à côte en bas */
-        .thumbs-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin-top: 2px;
+        
+        /* MINIATURES EN RONDS PARFAITS */
+        .thumbs-container {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 4px;
         }
         .thumb-box {
-            background: #1c1c1e;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%; /* Rend la miniature parfaitement ronde */
             border: 2px solid #333;
-            border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
-            height: 38px;
+            background: #1c1c1e;
             position: relative;
+            flex-shrink: 0;
+            transition: border-color 0.2s;
         }
         .thumb-box.active {
-            border-color: #ff9900;
+            border-color: #ff9900; /* Contour orange vif si actif */
+            box-shadow: 0 0 8px rgba(255, 153, 0, 0.4);
         }
         .thumb-box img, .thumb-box video {
             width: 100%;
@@ -440,7 +445,7 @@
                 <video id="main-video-p2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produits%201.mp4" class="product-video" controls playsinline></video>
                 <img id="main-img-p2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="No Farm G-13" class="product-img" style="display: none;">
             </div>
-            <div class="thumbs-grid">
+            <div class="thumbs-container">
                 <div class="thumb-box active" id="thumb-video-p2" onclick="showMediaP2('video')">
                     <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produits%201.mp4" muted playsinline></video>
                 </div>
@@ -492,7 +497,7 @@
                 <video id="main-video-p4-2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20lemon%20cherry)%20.mp4" class="product-video" controls playsinline style="display:none;"></video>
                 <video id="main-video-p4-3" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20banana%20).mp4" class="product-video" controls playsinline style="display:none;"></video>
             </div>
-            <div class="thumbs-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="thumbs-container">
                 <div class="thumb-box active" id="thumb-p4-1" onclick="showMediaP4(1)">
                     <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4" muted playsinline></video>
                 </div>
@@ -544,7 +549,7 @@
                 <video id="main-video-p6-1" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4" class="product-video" controls playsinline></video>
                 <video id="main-video-p6-2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5().mp4" class="product-video" controls playsinline style="display:none;"></video>
             </div>
-            <div class="thumbs-grid">
+            <div class="thumbs-container">
                 <div class="thumb-box active" id="thumb-p6-1" onclick="showMediaP6(1)">
                     <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4" muted playsinline></video>
                 </div>
@@ -573,7 +578,7 @@
                 <video id="main-video-p7-1" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4" class="product-video" controls playsinline></video>
                 <video id="main-video-p7-2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6%20().mp4" class="product-video" controls playsinline style="display:none;"></video>
             </div>
-            <div class="thumbs-grid">
+            <div class="thumbs-container">
                 <div class="thumb-box active" id="thumb-p7-1" onclick="showMediaP7(1)">
                     <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4" muted playsinline></video>
                 </div>
