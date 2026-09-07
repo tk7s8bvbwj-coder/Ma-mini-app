@@ -106,7 +106,7 @@
             flex-direction: column;
             justify-content: space-between;
         }
-        .catalog-img {
+        .catalog-img, .catalog-video {
             width: 100%;
             height: 130px;
             object-fit: cover;
@@ -345,7 +345,7 @@
 
             <!-- Produit 3 -->
             <div class="catalog-item" onclick="switchPage('produit-3')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4#t=1" class="catalog-img" muted preload="metadata" playsinline></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4#t=0.5" class="catalog-video" muted autoplay loop playsinline></video>
                 <div>
                     <div class="catalog-name">Dry 90u/220u</div>
                     <div class="catalog-sub">SixStar ⭐️</div>
@@ -355,7 +355,7 @@
 
             <!-- Produit 4 -->
             <div class="catalog-item" onclick="switchPage('produit-4')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4#t=1" class="catalog-img" muted preload="metadata" playsinline></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4#t=0.5" class="catalog-video" muted autoplay loop playsinline></video>
                 <div>
                     <div class="catalog-name">Dry 90u Prenium ✅</div>
                     <div class="catalog-sub">Wilz Farm 🧪👨‍🔬</div>
@@ -363,9 +363,9 @@
                 <div class="catalog-price">À partir de 13 €</div>
             </div>
 
-            <!-- Produit 5 -->
+            <!-- Produit 5 (Corrigé avec une image de secours sûre si IMG_6298.jpeg échoue) -->
             <div class="catalog-item" onclick="switchPage('produit-5')">
-                <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6298.jpeg" alt="Dry 90u Prenium" class="catalog-img">
+                <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6298.jpeg" onerror="this.src='https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg'" alt="Dry 90u Prenium" class="catalog-img">
                 <div>
                     <div class="catalog-name">Dry 90u Prenium ✅</div>
                     <div class="catalog-sub">Wilz Farm 🧪👨‍🔬</div>
@@ -375,7 +375,7 @@
 
             <!-- Produit 6 -->
             <div class="catalog-item" onclick="switchPage('produit-6')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4#t=1" class="catalog-img" muted preload="metadata" playsinline></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4#t=0.5" class="catalog-video" muted autoplay loop playsinline></video>
                 <div>
                     <div class="catalog-name">Olivette 🫒🍫</div>
                     <div class="catalog-sub">STATIC PLASMA 💫✨</div>
@@ -385,7 +385,7 @@
 
             <!-- Produit 7 -->
             <div class="catalog-item" onclick="switchPage('produit-7')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4#t=1" class="catalog-img" muted preload="metadata" playsinline></video>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4#t=0.5" class="catalog-video" muted autoplay loop playsinline></video>
                 <div>
                     <div class="catalog-name">Monster CaliMousse 🧽🇺🇸</div>
                     <div class="catalog-sub">Summer Édition ☄️</div>
@@ -481,12 +481,12 @@ BLUE DREAM MOUNTAIN IN LAANSSER 🍦 45% THC</div>
         </div>
     </div>
 
-    <!-- SOUS-PAGE 5 : PRODUIT 5 (Avec sa vidéo principale intégrée) -->
+    <!-- SOUS-PAGE 5 : PRODUIT 5 -->
     <div id="page-produit-5" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
             <div class="main-media-container">
-                <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6298.jpeg" alt="Dry 90u Prenium" class="product-img">
+                <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6298.jpeg" onerror="this.src='https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg'" alt="Dry 90u Prenium" class="product-img">
             </div>
             <div>
                 <div class="product-title">Dry 90u Prenium ✅</div>
@@ -503,7 +503,7 @@ PINK RUNTZ 🍇 🍌</div>
         </div>
     </div>
 
-    <!-- SOUS-PAGE 6 : PRODUIT 6 (Olivette - Avec option de voir les vidéos) -->
+    <!-- SOUS-PAGE 6 : PRODUIT 6 (Olivette) -->
     <div id="page-produit-6" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
