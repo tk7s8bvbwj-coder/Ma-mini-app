@@ -2,111 +2,81 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Bendouz Industry</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #0b0b0b;
-            color: #ffffff;
-            margin: 0;
-            padding: 15px;
-            padding-bottom: 90px;
+        * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
+
+        body {
+            background-color: #0d0d0f;
+            color: #ffffff;
+            padding-bottom: 70px; /* Espace pour la barre de navigation */
+        }
+
+        /* Style des pages */
         .page {
             display: none;
+            padding: 15px;
+            animation: fadeIn 0.2s ease-in-out;
         }
+
         .page.active {
             display: block;
         }
-        header {
-            text-align: center;
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* En-tête de page */
+        .page-header {
             margin-bottom: 20px;
         }
-        .logo-title {
-            font-size: 28px;
-            font-weight: 800;
-            color: #ff9900;
-            margin: 0;
-            letter-spacing: 1px;
-        }
-        .logo-subtitle {
-            font-size: 13px;
-            color: #aaa;
+
+        .page-header h2 {
+            font-size: 24px;
+            font-weight: 700;
             margin-top: 5px;
         }
+
         .divider {
-            width: 40px;
             height: 2px;
-            background-color: #ff9900;
-            margin: 10px auto 20px auto;
+            background: linear-gradient(90deg, #ff8800, transparent);
+            margin-top: 10px;
+            border-radius: 2px;
         }
-        .section-title {
-            text-align: center;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #666;
-            margin: 25px 0 15px 0;
-        }
-        /* Accueil */
-        .home-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        .home-card-btn {
-            background: #141414;
-            border: 1px solid #222;
-            border-radius: 14px;
-            padding: 20px 15px;
-            text-align: center;
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            font-weight: bold;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .home-card-btn span {
-            font-size: 22px;
-        }
-        .home-link-row {
-            background: #141414;
-            border: 1px solid #222;
-            border-radius: 14px;
-            padding: 16px;
-            text-align: center;
-            color: #fff;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-        /* Grille catalogue côte à côte */
+
+        /* Grille du catalogue */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
         }
+
         .catalog-item {
-            background: #141414;
-            border: 1px solid #222;
+            background: #16161a;
             border-radius: 14px;
             padding: 10px;
-            text-align: center;
-            cursor: pointer;
+            border: 1px solid #23232a;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            cursor: pointer;
+            transition: transform 0.1s ease;
         }
-        .catalog-img, .catalog-video {
+
+        .catalog-item:active {
+            transform: scale(0.97);
+        }
+
+        .catalog-img {
             width: 100%;
             height: 130px;
             object-fit: cover;
@@ -114,230 +84,113 @@
             margin-bottom: 8px;
             background: #000;
         }
+
+        /* Style pour transformer la vidéo du catalogue en aperçu avec bouton Play */
+        .catalog-video-container {
+            position: relative;
+            width: 100%;
+            height: 130px;
+            margin-bottom: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .catalog-video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .play-overlay-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 16px;
+            pointer-events: none; /* Laisse passer le clic pour ouvrir l'article */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
         .catalog-name {
-            font-weight: bold;
-            font-size: 15px;
+            font-size: 14px;
+            font-weight: 600;
             color: #fff;
             margin-bottom: 2px;
         }
+
         .catalog-sub {
-            font-size: 12px;
+            font-size: 11px;
             color: #888;
-            margin-bottom: 6px;
-            white-space: pre-line;
+            margin-bottom: 8px;
         }
+
         .catalog-price {
             font-size: 13px;
-            font-weight: bold;
-            color: #ff9900;
+            font-weight: 700;
+            color: #ff8800;
         }
 
-        /* Fiche Produit Détail */
-        .product-card {
-            background: #141414;
-            border: 1px solid #222;
-            border-radius: 16px;
-            padding: 15px;
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .main-media-container {
-            width: 100%;
-            max-height: 260px;
-            border-radius: 12px;
-            overflow: hidden;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 5px;
-        }
-        .product-img, .product-video {
-            width: 100%;
-            max-height: 260px;
-            object-fit: cover;
-            border-radius: 12px;
-            display: block;
-        }
-        /* Miniatures pour multi-vidéos */
-        .thumbnails-row {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 5px;
-            margin-bottom: 5px;
-        }
-        .thumbnail-item {
-            width: 65px;
-            height: 65px;
-            border-radius: 8px;
-            object-fit: cover;
-            cursor: pointer;
-            border: 2px solid #333;
-            background: #000;
-            flex-shrink: 0;
-            transition: border-color 0.2s;
-        }
-        .thumbnail-item.active {
-            border-color: #ff9900;
-        }
-
-        .product-title {
-            font-weight: bold;
-            font-size: 20px;
-            color: #fff;
-            margin-top: 5px;
-        }
-        .product-desc {
-            font-size: 14px;
-            color: #aaa;
-            white-space: pre-line;
-        }
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 5px;
-        }
-        .price-box {
-            background: #1c1c1e;
-            border: 1px solid #2c2c2e;
-            border-radius: 12px;
-            padding: 12px;
-            text-align: center;
-        }
-        .price-box .weight {
-            font-size: 12px;
-            color: #888;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-            display: block;
-        }
-        .price-box .amount {
-            font-size: 18px;
-            font-weight: bold;
-            color: #ffffff;
-        }
-        .btn-snap {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            font-size: 15px;
-            font-weight: bold;
-            background-color: #FFFC00;
-            color: #000000;
-            text-decoration: none;
-            border-radius: 12px;
-            text-align: center;
-            margin-top: 15px;
-        }
-        .btn-back {
-            background: #222;
-            color: #fff;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 8px;
-            font-size: 13px;
-            cursor: pointer;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        /* Pages Avis, Services, Contact */
-        .content-card {
-            background: #141414;
-            border: 1px solid #222;
-            border-radius: 16px;
-            padding: 18px;
-            margin-bottom: 15px;
-        }
-        .content-card h3 {
-            margin-top: 0;
-            font-size: 18px;
-            color: #fff;
-        }
-        .content-card p {
-            color: #aaa;
-            font-size: 14px;
-            line-height: 1.4;
-        }
-        .page-header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        .page-header h2 {
-            font-size: 24px;
-            margin: 0;
-            color: #fff;
-        }
-        /* Barre de navigation fixe en bas */
+        /* Barre de navigation du bas */
         .bottom-nav {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: #111;
-            border-top: 1px solid #222;
+            height: 60px;
+            background: #121215;
+            border-top: 1px solid #222228;
             display: flex;
             justify-content: space-around;
-            padding: 10px 0;
-            box-sizing: border-box;
+            align-items: center;
             z-index: 1000;
+            backdrop-filter: blur(10px);
         }
+
         .nav-item {
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             color: #777;
-            font-size: 10px;
             text-decoration: none;
-            background: none;
-            border: none;
+            font-size: 10px;
+            font-weight: 500;
             cursor: pointer;
+            transition: color 0.2s;
         }
+
         .nav-item.active {
-            color: #ff9900;
+            color: #ff8800;
         }
-        .nav-item span {
-            font-size: 18px;
-            display: block;
+
+        .nav-item span.icon {
+            font-size: 20px;
             margin-bottom: 2px;
         }
     </style>
 </head>
 <body>
 
-    <!-- PAGE 1 : MAISON (ACCUEIL) -->
-    <div id="page-maison" class="page active">
-        <header>
-            <div class="logo-title">BENDOUZ INDUSTRY</div>
+    <!-- PAGE 1 : ACCUEIL / MAISON -->
+    <div id="page-accueil" class="page active">
+        <div class="page-header">
+            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Bienvenue</div>
+            <h2>Bendouz Industry</h2>
             <div class="divider"></div>
-            <div class="logo-subtitle">Bendouz Industry • Le shop qui livre</div>
-            <div style="font-size: 12px; color: #666; margin-top: 6px;">Catalogue • Livraison • Click & Collect</div>
-        </header>
-
-        <div class="section-title">Le Shop</div>
-        <div class="home-grid">
-            <button class="home-card-btn" onclick="switchPage('catalogue')">
-                <span>🛍️</span> CATALOGUE
-            </button>
-            <button class="home-card-btn" onclick="switchPage('avis')">
-                <span>⭐</span> AVIS
-            </button>
-            <button class="home-card-btn" onclick="switchPage('services')">
-                <span>🚚</span> SERVICES
-            </button>
-            <button class="home-card-btn" onclick="switchPage('contact')">
-                <span>💬</span> CONTACT
-            </button>
         </div>
-
-        <div class="section-title">Suivez-nous</div>
-        <a href="https://t.me/+xwwz5S_q-9hhZjY0" target="_blank" class="home-link-row">Canal Telegram</a>
-        <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="home-link-row">Snapchat (commande)</a>
+        <p style="color: #aaa; font-size: 14px;">Bienvenue sur notre mini-application. Utilise le catalogue ci-dessous pour découvrir nos produits.</p>
     </div>
 
-    <!-- PAGE 2 : CATALOGUE (GRILLE CÔTE À CÔTE) -->
+    <!-- PAGE 2 : CATALOGUE -->
     <div id="page-catalogue" class="page">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">La Boutique</div>
@@ -368,7 +221,10 @@
 
             <!-- Produit 3 -->
             <div class="catalog-item" onclick="switchPage('produit-3')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4#t=0.5" class="catalog-video" muted autoplay loop playsinline></video>
+                <div class="catalog-video-container">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4#t=0.5" preload="metadata" playsinline></video>
+                    <div class="play-overlay-icon">▶</div>
+                </div>
                 <div>
                     <div class="catalog-name">Dry 90u/220u</div>
                     <div class="catalog-sub">SixStar ⭐️</div>
@@ -378,7 +234,10 @@
 
             <!-- Produit 4 -->
             <div class="catalog-item" onclick="switchPage('produit-4')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4#t=0.5" class="catalog-video" muted autoplay loop playsinline></video>
+                <div class="catalog-video-container">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4#t=0.5" preload="metadata" playsinline></video>
+                    <div class="play-overlay-icon">▶</div>
+                </div>
                 <div>
                     <div class="catalog-name">Dry 90u Prenium ✅</div>
                     <div class="catalog-sub">Wilz Farm 🧪👨‍🔬</div>
@@ -388,7 +247,10 @@
 
             <!-- Produit 5 (Pink Runtz) -->
             <div class="catalog-item" onclick="switchPage('produit-5')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%205%20(%20pink%20runtz).mp4#t=0.5" class="catalog-video" muted autoplay loop playsinline></video>
+                <div class="catalog-video-container">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%205%20(%20pink%20runtz).mp4#t=0.5" preload="metadata" playsinline></video>
+                    <div class="play-overlay-icon">▶</div>
+                </div>
                 <div>
                     <div class="catalog-name">Dry 90u Prenium ✅</div>
                     <div class="catalog-sub">Wilz Farm 🧪👨‍🔬</div>
@@ -398,7 +260,10 @@
 
             <!-- Produit 6 (Olivette) -->
             <div class="catalog-item" onclick="switchPage('produit-6')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4#t=0.5" class="catalog-video" muted autoplay loop playsinline></video>
+                <div class="catalog-video-container">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4#t=0.5" preload="metadata" playsinline></video>
+                    <div class="play-overlay-icon">▶</div>
+                </div>
                 <div>
                     <div class="catalog-name">Olivette 🫒🍫</div>
                     <div class="catalog-sub">STATIC PLASMA 💫✨</div>
@@ -408,7 +273,10 @@
 
             <!-- Produit 7 (Monster CaliMousse) -->
             <div class="catalog-item" onclick="switchPage('produit-7')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4#t=0.5" class="catalog-video" muted autoplay loop playsinline></video>
+                <div class="catalog-video-container">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4#t=0.5" preload="metadata" playsinline></video>
+                    <div class="play-overlay-icon">▶</div>
+                </div>
                 <div>
                     <div class="catalog-name">Monster CaliMousse 🧽🇺🇸</div>
                     <div class="catalog-sub">Summer Édition ☄️</div>
@@ -418,287 +286,80 @@
         </div>
     </div>
 
-    <!-- SOUS-PAGE 1 : PRODUIT 1 -->
-    <div id="page-produit-1" class="page">
-        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
-        <div class="product-card">
-            <img src="IMG_6179.jpeg" alt="Dry No Farm" class="product-img">
-            <div>
-                <div class="product-title">Dry No Farm</div>
-                <div class="product-desc">Mimosa 🍋🍋‍🟩</div>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-box"><span class="weight">1g</span><span class="amount">10 €</span></div>
-                <div class="price-box"><span class="weight">5g</span><span class="amount">50 €</span></div>
-                <div class="price-box"><span class="weight">10g</span><span class="amount">80 €</span></div>
-                <div class="price-box"><span class="weight">25g</span><span class="amount">170 €</span></div>
-                <div class="price-box"><span class="weight">50g</span><span class="amount">280 €</span></div>
-                <div class="price-box"><span class="weight">100g</span><span class="amount">520 €</span></div>
-            </div>
-            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
-        </div>
-    </div>
-
-    <!-- SOUS-PAGE 2 : PRODUIT 2 -->
-    <div id="page-produit-2" class="page">
-        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
-        <div class="product-card">
-            <img src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/IMG_6245.jpeg" alt="No Farm" class="product-img">
-            <div>
-                <div class="product-title">No Farm</div>
-                <div class="product-desc">G-13 🥦</div>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-box"><span class="weight">1g</span><span class="amount">10 €</span></div>
-                <div class="price-box"><span class="weight">5g</span><span class="amount">50 €</span></div>
-                <div class="price-box"><span class="weight">10g</span><span class="amount">80 €</span></div>
-                <div class="price-box"><span class="weight">25g</span><span class="amount">190 €</span></div>
-                <div class="price-box"><span class="weight">50g</span><span class="amount">360 €</span></div>
-            </div>
-            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
-        </div>
-    </div>
-
-    <!-- SOUS-PAGE 3 : PRODUIT 3 -->
-    <div id="page-produit-3" class="page">
-        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
-        <div class="product-card">
-            <div class="main-media-container">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%203.mp4" class="product-video" controls playsinline></video>
-            </div>
-            <div>
-                <div class="product-title">Dry 90u/220u</div>
-                <div class="product-desc">SixStar ⭐️
-BLUE DREAM MOUNTAIN IN LAANSSER 🍦 45% THC</div>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-box"><span class="weight">1g</span><span class="amount">15 €</span></div>
-                <div class="price-box"><span class="weight">5g</span><span class="amount">60 €</span></div>
-                <div class="price-box"><span class="weight">10g</span><span class="amount">90 €</span></div>
-            </div>
-            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
-        </div>
-    </div>
-
-    <!-- SOUS-PAGE 4 : PRODUIT 4 (3 Vidéos avec sélecteur miniature) -->
-    <div id="page-produit-4" class="page">
-        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
-        <div class="product-card">
-            <div class="main-media-container">
-                <video id="main-video-4" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4" class="product-video" controls playsinline></video>
-            </div>
-            <div class="thumbnails-row">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4" class="thumbnail-item active" onclick="changeVideo('4', 'https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4', this)" muted playsinline></video>
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20lemon%20cherry)%20.mp4" class="thumbnail-item" onclick="changeVideo('4', 'https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20lemon%20cherry)%20.mp4', this)" muted playsinline></video>
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20banana%20).mp4" class="thumbnail-item" onclick="changeVideo('4', 'https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20banana%20).mp4', this)" muted playsinline></video>
-            </div>
-            <div>
-                <div class="product-title">Dry 90u Prenium ✅</div>
-                <div class="product-desc">Wilz Farm 🧪👨‍🔬
-40% THC
-- GELATO33 🍭 🍦
-- LEMON CHERRY 🍋 🍒
-- BANANA PUNSH 🍌 🍹</div>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-box"><span class="weight">1g</span><span class="amount">13 €</span></div>
-                <div class="price-box"><span class="weight">5g</span><span class="amount">55 €</span></div>
-                <div class="price-box"><span class="weight">10g</span><span class="amount">85 €</span></div>
-            </div>
-            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
-        </div>
-    </div>
-
-    <!-- SOUS-PAGE 5 : PRODUIT 5 (Pink Runtz) -->
-    <div id="page-produit-5" class="page">
-        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
-        <div class="product-card">
-            <div class="main-media-container">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%205%20(%20pink%20runtz).mp4" class="product-video" controls playsinline></video>
-            </div>
-            <div>
-                <div class="product-title">Dry 90u Prenium ✅</div>
-                <div class="product-desc">Wilz Farmz 🧪👨‍🔬
-39% THC
-PINK RUNTZ 🍇 🍌</div>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-box"><span class="weight">1g</span><span class="amount">12 €</span></div>
-                <div class="price-box"><span class="weight">5g</span><span class="amount">50 €</span></div>
-                <div class="price-box"><span class="weight">10g</span><span class="amount">80 €</span></div>
-            </div>
-            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
-        </div>
-    </div>
-
-    <!-- SOUS-PAGE 6 : PRODUIT 6 (Olivette - 2 Vidéos avec sélecteur miniature) -->
-    <div id="page-produit-6" class="page">
-        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
-        <div class="product-card">
-            <div class="main-media-container">
-                <video id="main-video-6" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4" class="product-video" controls playsinline></video>
-            </div>
-            <div class="thumbnails-row">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4" class="thumbnail-item active" onclick="changeVideo('6', 'https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4', this)" muted playsinline></video>
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5().mp4" class="thumbnail-item" onclick="changeVideo('6', 'https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5().mp4', this)" muted playsinline></video>
-            </div>
-            <div>
-                <div class="product-title">Olivette 🫒🍫</div>
-                <div class="product-desc">STATIC PLASMA 💫✨🇺🇸
-
-- Banana Zkittles 🍬🍌
-- Mymosa Runtz 🍭</div>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-box"><span class="weight">1g</span><span class="amount">20 €</span></div>
-                <div class="price-box"><span class="weight">5g</span><span class="amount">90 €</span></div>
-                <div class="price-box"><span class="weight">10g</span><span class="amount">180 €</span></div>
-            </div>
-            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
-        </div>
-    </div>
-
-    <!-- SOUS-PAGE 7 : PRODUIT 7 (Monster CaliMousse - 2 Vidéos avec sélecteur miniature) -->
-    <div id="page-produit-7" class="page">
-        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
-        <div class="product-card">
-            <div class="main-media-container">
-                <video id="main-video-7" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4" class="product-video" controls playsinline></video>
-            </div>
-            <div class="thumbnails-row">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4" class="thumbnail-item active" onclick="changeVideo('7', 'https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4', this)" muted playsinline></video>
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6%20().mp4" class="thumbnail-item" onclick="changeVideo('7', 'https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6%20().mp4', this)" muted playsinline></video>
-            </div>
-            <div>
-                <div class="product-title">Monster CaliMousse 🧽🇺🇸</div>
-                <div class="product-desc">Summer Édition ☄️
-
-- IceCream Cake 🍰
-- IceCream Pie 🧁
-- Oreoz 🍩
-- Papaya 🍉🥭
-- Runtz 🍬🍭</div>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-box"><span class="weight">1g</span><span class="amount">15 €</span></div>
-                <div class="price-box"><span class="weight">5g</span><span class="amount">60 €</span></div>
-                <div class="price-box"><span class="weight">10g</span><span class="amount">90 €</span></div>
-                <div class="price-box"><span class="weight">25g</span><span class="amount">160 €</span></div>
-                <div class="price-box"><span class="weight">50g</span><span class="amount">260 €</span></div>
-                <div class="price-box"><span class="weight">100g</span><span class="amount">480 €</span></div>
-            </div>
-            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
-        </div>
-    </div>
-
     <!-- PAGE 3 : AVIS -->
     <div id="page-avis" class="page">
         <div class="page-header">
-            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">La Maison</div>
-            <h2>Avis clients</h2>
+            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Retours</div>
+            <h2>Avis</h2>
             <div class="divider"></div>
         </div>
-        <div class="content-card">
-            <h3>Laisser un avis</h3>
-            <p id="welcome-user-avis" style="margin-bottom: 10px; color: #fff; font-weight: 500;">Bienvenue</p>
-            <textarea id="avis-text" placeholder="Partagez votre expérience..." style="width:100%; height:80px; background:#1c1c1e; border:1px solid #333; border-radius:8px; color:#fff; padding:10px; box-sizing:border-box; resize:none;"></textarea>
-            <button onclick="envoyerAvis()" style="width:100%; background:linear-gradient(90deg, #ff9900, #ffc107); border:none; border-radius:10px; padding:12px; font-weight:bold; color:#000; cursor:pointer; margin-top:10px;">ENVOYER</button>
-        </div>
+        <p style="color: #aaa; font-size: 14px;">Découvre les avis de nos clients.</p>
     </div>
 
     <!-- PAGE 4 : SERVICES -->
     <div id="page-services" class="page">
         <div class="page-header">
-            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">L'art du service</div>
+            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Informations</div>
             <h2>Services</h2>
             <div class="divider"></div>
         </div>
-        <div class="content-card">
-            <h3>I • Livraison</h3>
-            <p>Livraison dans la zone ST-OMER & ALENTOURS (62)</p>
-        </div>
-        <div class="content-card">
-            <h3>II • Sur place</h3>
-            <p>Commandez en ligne, retirez sur place à St-Omer aux horaires d'ouverture.</p>
-        </div>
+        <p style="color: #aaa; font-size: 14px;">Toutes nos options de livraison et services.</p>
     </div>
 
     <!-- PAGE 5 : CONTACT -->
     <div id="page-contact" class="page">
         <div class="page-header">
-            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Restons en lien</div>
+            <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Support</div>
             <h2>Contact</h2>
             <div class="divider"></div>
         </div>
-        <a href="https://t.me/+xwwz5S_q-9hhZjY0" target="_blank" class="home-link-row" style="background:#141414; border:1px solid #333; margin-bottom:12px;">
-            <strong>Canal Telegram</strong>
-        </a>
-        <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="home-link-row" style="background:#141414; border:1px solid #333; margin-bottom:12px;">
-            <strong>Snapchat (commande)</strong>
-        </a>
+        <p style="color: #aaa; font-size: 14px;">Contacte-nous en cas de besoin.</p>
     </div>
 
-    <!-- BARRE DE NAVIGATION -->
+    <!-- BARRE DE NAVIGATION INFÉRIEURE -->
     <nav class="bottom-nav">
-        <button class="nav-item active" onclick="switchPage('maison')" id="nav-maison"><span>🏠</span>Maison</button>
-        <button class="nav-item" onclick="switchPage('catalogue')" id="nav-catalogue"><span>🛍️</span>Catalogue</button>
-        <button class="nav-item" onclick="switchPage('avis')" id="nav-avis"><span>⭐</span>Avis</button>
-        <button class="nav-item" onclick="switchPage('services')" id="nav-services"><span>🚚</span>Services</button>
-        <button class="nav-item" onclick="switchPage('contact')" id="nav-contact"><span>💬</span>Contact</button>
+        <div class="nav-item active" onclick="switchPage('accueil', this)">
+            <span class="icon">🏠</span>
+            <span>Maison</span>
+        </div>
+        <div class="nav-item" onclick="switchPage('catalogue', this)">
+            <span class="icon">🛍️</span>
+            <span>Catalogue</span>
+        </div>
+        <div class="nav-item" onclick="switchPage('avis', this)">
+            <span class="icon">⭐</span>
+            <span>Avis</span>
+        </div>
+        <div class="nav-item" onclick="switchPage('services', this)">
+            <span class="icon">🚚</span>
+            <span>Services</span>
+        </div>
+        <div class="nav-item" onclick="switchPage('contact', this)">
+            <span class="icon">💬</span>
+            <span>Contact</span>
+        </div>
     </nav>
 
     <script>
-        const tg = window.Telegram.WebApp;
-        tg.ready();
-        tg.expand();
-
-        let currentUserName = "Client";
-        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-            currentUserName = tg.initDataUnsafe.user.first_name;
-            document.getElementById('welcome-user-avis').innerText = `Bienvenue, ${currentUserName}`;
-        }
-
-        // Fonction pour changer la vidéo principale lorsqu'on clique sur une miniature
-        function changeVideo(productId, videoSrc, thumbnailElement) {
-            const mainVideo = document.getElementById('main-video-' + productId);
-            if (mainVideo) {
-                mainVideo.src = videoSrc;
-                mainVideo.load();
-                mainVideo.play().catch(e => console.log("Autoplay bloqué :", e));
-            }
-            // Gérer le style actif des miniatures dans la ligne
-            const container = thumbnailElement.parentElement;
-            const thumbs = container.querySelectorAll('.thumbnail-item');
-            thumbs.forEach(t => t.classList.remove('active'));
-            thumbnailElement.classList.add('active');
-        }
-
-        function envoyerAvis() {
-            const texteAvis = document.getElementById('avis-text').value.trim();
-            if(!texteAvis) {
-                alert("Veuillez écrire un avis avant d'envoyer.");
-                return;
-            }
-            const messageFinal = `💬 Nouvel avis de ${currentUserName} :\n\n"${texteAvis}"`;
-            const urlTelegram = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/+3FMT2erV1JgxZTM0')}&text=${encodeURIComponent(messageFinal)}`;
-            window.open(urlTelegram, '_blank');
-        }
-
-        function switchPage(pageId) {
+        function switchPage(pageId, element) {
+            // Masquer toutes les pages
             const pages = document.querySelectorAll('.page');
-            pages.forEach(p => p.classList.remove('active'));
+            pages.forEach(page => page.classList.remove('active'));
 
-            document.getElementById('page-' + pageId).classList.add('active');
-
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(n => n.classList.remove('active'));
-            
-            if(pageId.startsWith('produit-')) {
-                document.getElementById('nav-catalogue').classList.add('active');
-            } else {
-                const activeNav = document.getElementById('nav-' + pageId);
-                if(activeNav) activeNav.classList.add('active');
+            // Afficher la page demandée (en gérant si l'ID commence par 'page-' ou non)
+            const targetPageId = pageId.startsWith('page-') ? pageId : 'page-' + pageId;
+            const targetPage = document.getElementById(targetPageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
             }
+
+            // Gérer la classe active sur la barre de navigation si le clic vient de la nav
+            if (element) {
+                const navItems = document.querySelectorAll('.nav-item');
+                navItems.forEach(item => item.classList.remove('active'));
+                element.classList.add('active');
+            }
+            
             window.scrollTo(0, 0);
         }
     </script>
