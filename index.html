@@ -16,24 +16,19 @@
         body {
             background-color: #0d0d0f;
             color: #ffffff;
-            padding-bottom: 70px;
+            padding-bottom: 75px;
         }
 
         .page {
             display: none;
-            padding: 15px;
-            animation: fadeIn 0.2s ease-in-out;
+            padding: 16px;
         }
 
         .page.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(4px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        /* En-têtes de pages */
         .page-header {
             margin-bottom: 20px;
         }
@@ -41,17 +36,18 @@
         .page-header h2 {
             font-size: 24px;
             font-weight: 700;
-            margin-top: 5px;
+            margin-top: 4px;
+            letter-spacing: -0.5px;
         }
 
         .divider {
             height: 2px;
             background: linear-gradient(90deg, #ff8800, transparent);
-            margin-top: 10px;
+            margin-top: 8px;
             border-radius: 2px;
         }
 
-        /* Grille du catalogue */
+        /* Grille du catalogue d'origine */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -62,16 +58,17 @@
             background: #16161a;
             border-radius: 14px;
             padding: 10px;
-            border: 1px solid #23232a;
+            border: 1px solid #22222a;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             cursor: pointer;
-            transition: transform 0.1s ease;
+            transition: transform 0.1s ease, border-color 0.2s;
         }
 
         .catalog-item:active {
             transform: scale(0.97);
+            border-color: #ff8800;
         }
 
         .catalog-img {
@@ -83,7 +80,7 @@
             background: #000;
         }
 
-        /* Conteneur vidéo avec bouton Play superposé */
+        /* Vidéo stylisée avec bouton Play au milieu */
         .catalog-video-container {
             position: relative;
             width: 100%;
@@ -106,17 +103,18 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            background: rgba(0, 0, 0, 0.6);
+            width: 38px;
+            height: 38px;
+            background: rgba(0, 0, 0, 0.65);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #fff;
-            font-size: 15px;
+            font-size: 14px;
             pointer-events: none;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(2px);
         }
 
         .catalog-name {
@@ -138,7 +136,7 @@
             color: #ff8800;
         }
 
-        /* Barre de navigation du bas */
+        /* Barre de navigation fixe du bas */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -151,7 +149,6 @@
             justify-content: space-around;
             align-items: center;
             z-index: 1000;
-            backdrop-filter: blur(10px);
         }
 
         .nav-item {
@@ -164,6 +161,7 @@
             font-weight: 500;
             cursor: pointer;
             transition: color 0.2s;
+            flex: 1;
         }
 
         .nav-item.active {
@@ -173,6 +171,15 @@
         .nav-item span.icon {
             font-size: 20px;
             margin-bottom: 2px;
+        }
+
+        /* Styles additionnels des pages intérieures */
+        .content-card {
+            background: #16161a;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            border: 1px solid #22222a;
         }
     </style>
 </head>
@@ -185,7 +192,9 @@
             <h2>Bendouz Industry</h2>
             <div class="divider"></div>
         </div>
-        <p style="color: #aaa; font-size: 14px;">Bienvenue sur notre mini-application. Utilise le catalogue ci-dessous pour découvrir nos produits.</p>
+        <div class="content-card">
+            <p style="color: #ccc; font-size: 14px; line-height: 1.5;">Bienvenue sur notre mini-application officielle. Utilise le catalogue ci-dessous pour découvrir l'ensemble de nos produits disponibles.</p>
+        </div>
     </div>
 
     <!-- PAGE 2 : CATALOGUE -->
@@ -256,7 +265,7 @@
                 <div class="catalog-price">À partir de 12 €</div>
             </div>
 
-            <!-- Produit 6 -->
+            <!-- Produit 6 (Olivette) -->
             <div class="catalog-item" onclick="switchPage('produit-6')">
                 <div class="catalog-video-container">
                     <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4#t=0.5" preload="metadata" playsinline></video>
@@ -269,7 +278,7 @@
                 <div class="catalog-price">À partir de 20 €</div>
             </div>
 
-            <!-- Produit 7 -->
+            <!-- Produit 7 (CaliMousse) -->
             <div class="catalog-item" onclick="switchPage('produit-7')">
                 <div class="catalog-video-container">
                     <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4#t=0.5" preload="metadata" playsinline></video>
@@ -291,7 +300,9 @@
             <h2>Avis</h2>
             <div class="divider"></div>
         </div>
-        <p style="color: #aaa; font-size: 14px;">Découvre les avis de nos clients.</p>
+        <div class="content-card">
+            <p style="color: #ccc; font-size: 14px;">Découvre tous les retours et avis de nos clients satisfaits.</p>
+        </div>
     </div>
 
     <!-- PAGE 4 : SERVICES -->
@@ -301,7 +312,9 @@
             <h2>Services</h2>
             <div class="divider"></div>
         </div>
-        <p style="color: #aaa; font-size: 14px;">Toutes nos options de livraison et services.</p>
+        <div class="content-card">
+            <p style="color: #ccc; font-size: 14px;">Consulte nos options de livraison et nos conditions de service.</p>
+        </div>
     </div>
 
     <!-- PAGE 5 : CONTACT -->
@@ -311,71 +324,73 @@
             <h2>Contact</h2>
             <div class="divider"></div>
         </div>
-        <p style="color: #aaa; font-size: 14px;">Contacte-nous en cas de besoin.</p>
+        <div class="content-card">
+            <p style="color: #ccc; font-size: 14px;">Contacte notre support officiel en cas de besoin.</p>
+        </div>
     </div>
 
-    <!-- PAGES DETAIL PRODUITS (Exemples pour éviter l'écran noir) -->
+    <!-- PAGES DE DETAILS PRODUITS -->
     <div id="page-produit-1" class="page">
         <div class="page-header">
-            <h2 onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 16px;">← Retour Catalogue</h2>
+            <div onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 13px; font-weight: 600; margin-bottom: 6px;">← Retour Catalogue</div>
             <h2>Dry No Farm</h2>
             <div class="divider"></div>
         </div>
-        <p style="color: #aaa;">Détails du produit Dry No Farm...</p>
+        <div class="content-card"><p style="color: #aaa;">Détails complets du produit...</p></div>
     </div>
 
     <div id="page-produit-2" class="page">
         <div class="page-header">
-            <h2 onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 16px;">← Retour Catalogue</h2>
+            <div onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 13px; font-weight: 600; margin-bottom: 6px;">← Retour Catalogue</div>
             <h2>No Farm</h2>
             <div class="divider"></div>
         </div>
-        <p style="color: #aaa;">Détails du produit No Farm...</p>
+        <div class="content-card"><p style="color: #aaa;">Détails complets du produit...</p></div>
     </div>
 
     <div id="page-produit-3" class="page">
         <div class="page-header">
-            <h2 onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 16px;">← Retour Catalogue</h2>
+            <div onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 13px; font-weight: 600; margin-bottom: 6px;">← Retour Catalogue</div>
             <h2>Dry 90u/220u</h2>
             <div class="divider"></div>
         </div>
-        <p style="color: #aaa;">Détails du produit Dry 90u/220u...</p>
+        <div class="content-card"><p style="color: #aaa;">Détails complets du produit...</p></div>
     </div>
 
     <div id="page-produit-4" class="page">
         <div class="page-header">
-            <h2 onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 16px;">← Retour Catalogue</h2>
+            <div onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 13px; font-weight: 600; margin-bottom: 6px;">← Retour Catalogue</div>
             <h2>Dry 90u Prenium ✅</h2>
             <div class="divider"></div>
         </div>
-        <p style="color: #aaa;">Détails du produit Dry 90u Prenium...</p>
+        <div class="content-card"><p style="color: #aaa;">Détails complets du produit...</p></div>
     </div>
 
     <div id="page-produit-5" class="page">
         <div class="page-header">
-            <h2 onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 16px;">← Retour Catalogue</h2>
+            <div onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 13px; font-weight: 600; margin-bottom: 6px;">← Retour Catalogue</div>
             <h2>Dry 90u Prenium ✅</h2>
             <div class="divider"></div>
         </div>
-        <p style="color: #aaa;">Détails du produit...</p>
+        <div class="content-card"><p style="color: #aaa;">Détails complets du produit...</p></div>
     </div>
 
     <div id="page-produit-6" class="page">
         <div class="page-header">
-            <h2 onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 16px;">← Retour Catalogue</h2>
+            <div onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 13px; font-weight: 600; margin-bottom: 6px;">← Retour Catalogue</div>
             <h2>Olivette 🫒🍫</h2>
             <div class="divider"></div>
         </div>
-        <p style="color: #aaa;">Détails du produit...</p>
+        <div class="content-card"><p style="color: #aaa;">Détails complets du produit...</p></div>
     </div>
 
     <div id="page-produit-7" class="page">
         <div class="page-header">
-            <h2 onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 16px;">← Retour Catalogue</h2>
+            <div onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 13px; font-weight: 600; margin-bottom: 6px;">← Retour Catalogue</div>
             <h2>Monster CaliMousse 🧽🇺🇸</h2>
             <div class="divider"></div>
         </div>
-        <p style="color: #aaa;">Détails du produit...</p>
+        <div class="content-card"><p style="color: #aaa;">Détails complets du produit...</p></div>
     </div>
 
     <!-- BARRE DE NAVIGATION INFÉRIEURE -->
