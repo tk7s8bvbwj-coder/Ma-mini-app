@@ -144,7 +144,7 @@
         }
         .main-media-container {
             width: 100%;
-            max-height: 260px;
+            max-height: 170px; /* Réduit pour plus de compacité */
             border-radius: 12px;
             overflow: hidden;
             background: #000;
@@ -154,7 +154,7 @@
         }
         .product-img, .product-video {
             width: 100%;
-            max-height: 260px;
+            max-height: 170px; /* Réduit pour plus de compacité */
             object-fit: cover;
             border-radius: 12px;
             display: block;
@@ -172,7 +172,7 @@
             border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
-            height: 50px;
+            height: 38px; /* Réduit pour des carrés/rectangles plus petits */
             position: relative;
         }
         .thumb-box.active {
@@ -727,6 +727,17 @@ PINK RUNTZ 🍇🍌</div>
             document.getElementById('welcome-user-avis').innerText = `Bienvenue, ${currentUserName}`;
         }
 
+        function switchPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + pageId).classList.add('active');
+
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            const navBtn = document.getElementById('nav-' + pageId);
+            if (navBtn) navBtn.classList.add('active');
+
+            window.scrollTo(0, 0);
+        }
+
         // Bascule média pour le Produit 2
         function showMediaP2(type) {
             const videoElem = document.getElementById('main-video-p2');
@@ -757,95 +768,50 @@ PINK RUNTZ 🍇🍌</div>
             const t2 = document.getElementById('thumb-p4-2');
             const t3 = document.getElementById('thumb-p4-3');
 
-            v1.style.display = 'none'; v1.pause();
-            v2.style.display = 'none'; v2.pause();
-            v3.style.display = 'none'; v3.pause();
-            t1.classList.remove('active');
-            t2.classList.remove('active');
-            t3.classList.remove('active');
+            v1.style.display = index === 1 ? 'block' : 'none'; if(index !== 1) v1.pause();
+            v2.style.display = index === 2 ? 'block' : 'none'; if(index !== 2) v2.pause();
+            v3.style.display = index === 3 ? 'block' : 'none'; if(index !== 3) v3.pause();
 
-            if(index === 1) {
-                v1.style.display = 'block';
-                t1.classList.add('active');
-            } else if(index === 2) {
-                v2.style.display = 'block';
-                t2.classList.add('active');
-            } else if(index === 3) {
-                v3.style.display = 'block';
-                t3.classList.add('active');
-            }
+            t1.classList.toggle('active', index === 1);
+            t2.classList.toggle('active', index === 2);
+            t3.classList.toggle('active', index === 3);
         }
 
-        // Bascule multi-vidéos pour le Produit 6 (Olivette)
+        // Bascule multi-vidéos pour le Produit 6
         function showMediaP6(index) {
             const v1 = document.getElementById('main-video-p6-1');
             const v2 = document.getElementById('main-video-p6-2');
             const t1 = document.getElementById('thumb-p6-1');
             const t2 = document.getElementById('thumb-p6-2');
 
-            v1.style.display = 'none'; v1.pause();
-            v2.style.display = 'none'; v2.pause();
-            t1.classList.remove('active');
-            t2.classList.remove('active');
+            v1.style.display = index === 1 ? 'block' : 'none'; if(index !== 1) v1.pause();
+            v2.style.display = index === 2 ? 'block' : 'none'; if(index !== 2) v2.pause();
 
-            if(index === 1) {
-                v1.style.display = 'block';
-                t1.classList.add('active');
-            } else if(index === 2) {
-                v2.style.display = 'block';
-                t2.classList.add('active');
-            }
+            t1.classList.toggle('active', index === 1);
+            t2.classList.toggle('active', index === 2);
         }
 
-        // Bascule multi-vidéos pour le Produit 7 (CaliMousse)
+        // Bascule multi-vidéos pour le Produit 7
         function showMediaP7(index) {
             const v1 = document.getElementById('main-video-p7-1');
             const v2 = document.getElementById('main-video-p7-2');
             const t1 = document.getElementById('thumb-p7-1');
             const t2 = document.getElementById('thumb-p7-2');
 
-            v1.style.display = 'none'; v1.pause();
-            v2.style.display = 'none'; v2.pause();
-            t1.classList.remove('active');
-            t2.classList.remove('active');
+            v1.style.display = index === 1 ? 'block' : 'none'; if(index !== 1) v1.pause();
+            v2.style.display = index === 2 ? 'block' : 'none'; if(index !== 2) v2.pause();
 
-            if(index === 1) {
-                v1.style.display = 'block';
-                t1.classList.add('active');
-            } else if(index === 2) {
-                v2.style.display = 'block';
-                t2.classList.add('active');
-            }
+            t1.classList.toggle('active', index === 1);
+            t2.classList.toggle('active', index === 2);
         }
 
         function envoyerAvis() {
-            const texteAvis = document.getElementById('avis-text').value.trim();
-            if(!texteAvis) {
+            const txt = document.getElementById('avis-text').value;
+            if(!txt.trim()) {
                 alert("Veuillez écrire un avis avant d'envoyer.");
                 return;
             }
-            const messageFinal = `💬 Nouvel avis de ${currentUserName} :\n\n"${texteAvis}"`;
-            const urlTelegram = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/+3FMT2erV1JgxZTM0')}&text=${encodeURIComponent(messageFinal)}`;
-            window.open(urlTelegram, '_blank');
-        }
-
-        function switchPage(pageId) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(p => p.classList.remove('active'));
-
-            document.getElementById('page-' + pageId).classList.add('active');
-
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(n => n.classList.remove('active'));
-            
-            if(pageId.startsWith('produit-')) {
-                document.getElementById('nav-catalogue').classList.add('active');
-            } else {
-                const activeNav = document.getElementById('nav-' + pageId);
-                if(activeNav) activeNav.classList.add('active');
-            }
-
-            window.scrollTo(0, 0);
+            window.open("https://t.me/+xwwz5S_q-9hhZjY0", "_blank");
         }
     </script>
 </body>
