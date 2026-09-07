@@ -16,10 +16,9 @@
         body {
             background-color: #0d0d0f;
             color: #ffffff;
-            padding-bottom: 70px; /* Espace pour la barre de navigation */
+            padding-bottom: 70px;
         }
 
-        /* Style des pages */
         .page {
             display: none;
             padding: 15px;
@@ -35,7 +34,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* En-tête de page */
         .page-header {
             margin-bottom: 20px;
         }
@@ -85,7 +83,7 @@
             background: #000;
         }
 
-        /* Style pour transformer la vidéo du catalogue en aperçu avec bouton Play */
+        /* Conteneur vidéo avec bouton Play superposé */
         .catalog-video-container {
             position: relative;
             width: 100%;
@@ -116,8 +114,8 @@
             align-items: center;
             justify-content: center;
             color: #fff;
-            font-size: 16px;
-            pointer-events: none; /* Laisse passer le clic pour ouvrir l'article */
+            font-size: 15px;
+            pointer-events: none;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
@@ -180,7 +178,7 @@
 </head>
 <body>
 
-    <!-- PAGE 1 : ACCUEIL / MAISON -->
+    <!-- PAGE 1 : ACCUEIL -->
     <div id="page-accueil" class="page active">
         <div class="page-header">
             <div style="font-size: 11px; text-transform: uppercase; color: #666; letter-spacing: 1px;">Bienvenue</div>
@@ -245,7 +243,7 @@
                 <div class="catalog-price">À partir de 13 €</div>
             </div>
 
-            <!-- Produit 5 (Pink Runtz) -->
+            <!-- Produit 5 -->
             <div class="catalog-item" onclick="switchPage('produit-5')">
                 <div class="catalog-video-container">
                     <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%205%20(%20pink%20runtz).mp4#t=0.5" preload="metadata" playsinline></video>
@@ -258,7 +256,7 @@
                 <div class="catalog-price">À partir de 12 €</div>
             </div>
 
-            <!-- Produit 6 (Olivette) -->
+            <!-- Produit 6 -->
             <div class="catalog-item" onclick="switchPage('produit-6')">
                 <div class="catalog-video-container">
                     <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/5.mp4#t=0.5" preload="metadata" playsinline></video>
@@ -271,7 +269,7 @@
                 <div class="catalog-price">À partir de 20 €</div>
             </div>
 
-            <!-- Produit 7 (Monster CaliMousse) -->
+            <!-- Produit 7 -->
             <div class="catalog-item" onclick="switchPage('produit-7')">
                 <div class="catalog-video-container">
                     <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4#t=0.5" preload="metadata" playsinline></video>
@@ -316,6 +314,70 @@
         <p style="color: #aaa; font-size: 14px;">Contacte-nous en cas de besoin.</p>
     </div>
 
+    <!-- PAGES DETAIL PRODUITS (Exemples pour éviter l'écran noir) -->
+    <div id="page-produit-1" class="page">
+        <div class="page-header">
+            <h2 onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 16px;">← Retour Catalogue</h2>
+            <h2>Dry No Farm</h2>
+            <div class="divider"></div>
+        </div>
+        <p style="color: #aaa;">Détails du produit Dry No Farm...</p>
+    </div>
+
+    <div id="page-produit-2" class="page">
+        <div class="page-header">
+            <h2 onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 16px;">← Retour Catalogue</h2>
+            <h2>No Farm</h2>
+            <div class="divider"></div>
+        </div>
+        <p style="color: #aaa;">Détails du produit No Farm...</p>
+    </div>
+
+    <div id="page-produit-3" class="page">
+        <div class="page-header">
+            <h2 onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 16px;">← Retour Catalogue</h2>
+            <h2>Dry 90u/220u</h2>
+            <div class="divider"></div>
+        </div>
+        <p style="color: #aaa;">Détails du produit Dry 90u/220u...</p>
+    </div>
+
+    <div id="page-produit-4" class="page">
+        <div class="page-header">
+            <h2 onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 16px;">← Retour Catalogue</h2>
+            <h2>Dry 90u Prenium ✅</h2>
+            <div class="divider"></div>
+        </div>
+        <p style="color: #aaa;">Détails du produit Dry 90u Prenium...</p>
+    </div>
+
+    <div id="page-produit-5" class="page">
+        <div class="page-header">
+            <h2 onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 16px;">← Retour Catalogue</h2>
+            <h2>Dry 90u Prenium ✅</h2>
+            <div class="divider"></div>
+        </div>
+        <p style="color: #aaa;">Détails du produit...</p>
+    </div>
+
+    <div id="page-produit-6" class="page">
+        <div class="page-header">
+            <h2 onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 16px;">← Retour Catalogue</h2>
+            <h2>Olivette 🫒🍫</h2>
+            <div class="divider"></div>
+        </div>
+        <p style="color: #aaa;">Détails du produit...</p>
+    </div>
+
+    <div id="page-produit-7" class="page">
+        <div class="page-header">
+            <h2 onclick="switchPage('catalogue')" style="cursor: pointer; color: #ff8800; font-size: 16px;">← Retour Catalogue</h2>
+            <h2>Monster CaliMousse 🧽🇺🇸</h2>
+            <div class="divider"></div>
+        </div>
+        <p style="color: #aaa;">Détails du produit...</p>
+    </div>
+
     <!-- BARRE DE NAVIGATION INFÉRIEURE -->
     <nav class="bottom-nav">
         <div class="nav-item active" onclick="switchPage('accueil', this)">
@@ -342,19 +404,16 @@
 
     <script>
         function switchPage(pageId, element) {
-            // Masquer toutes les pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
 
-            // Afficher la page demandée (en gérant si l'ID commence par 'page-' ou non)
             const targetPageId = pageId.startsWith('page-') ? pageId : 'page-' + pageId;
             const targetPage = document.getElementById(targetPageId);
             if (targetPage) {
                 targetPage.classList.add('active');
             }
 
-            // Gérer la classe active sur la barre de navigation si le clic vient de la nav
-            if (element) {
+            if (element && element.classList.contains('nav-item')) {
                 const navItems = document.querySelectorAll('.nav-item');
                 navItems.forEach(item => item.classList.remove('active'));
                 element.classList.add('active');
