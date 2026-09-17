@@ -414,6 +414,16 @@
                 </div>
                 <div class="catalog-price">À partir de 15 €</div>
             </div>
+
+            <!-- NOUVEL ARTICLE : AMNESIA -->
+            <div class="catalog-item" onclick="switchPage('produit-8')">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Ammesia%20.mp4#t=1" class="catalog-img" muted preload="metadata"></video>
+                <div>
+                    <div class="catalog-name">Amnesia</div>
+                    <div class="catalog-sub">🍁</div>
+                </div>
+                <div class="catalog-price">À partir de 10 €</div>
+            </div>
         </div>
     </div>
 
@@ -603,6 +613,41 @@
         </div>
     </div>
 
+    <!-- SOUS-PAGE 8 : AMNESIA (PRODUIT 8) -->
+    <div id="page-produit-8" class="page">
+        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
+        <div class="product-card">
+            <div class="main-media-container">
+                <video id="main-video-p8-1" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Ammesia%20.mp4" class="product-video" controls playsinline></video>
+                <video id="main-video-p8-2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Ammesia%202.mp4" class="product-video" controls playsinline style="display:none;"></video>
+                <video id="main-video-p8-3" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Ammesia%203.mp4" class="product-video" controls playsinline style="display:none;"></video>
+            </div>
+            <div class="thumbs-container">
+                <div class="thumb-box active" id="thumb-p8-1" onclick="showMediaP8(1)">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Ammesia%20.mp4" muted playsinline></video>
+                </div>
+                <div class="thumb-box" id="thumb-p8-2" onclick="showMediaP8(2)">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Ammesia%202.mp4" muted playsinline></video>
+                </div>
+                <div class="thumb-box" id="thumb-p8-3" onclick="showMediaP8(3)">
+                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Ammesia%203.mp4" muted playsinline></video>
+                </div>
+            </div>
+            <div>
+                <div class="product-title">Amnesia</div>
+                <div class="product-desc">🍁</div>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-box"><span class="weight">1g</span><span class="amount">10 €</span></div>
+                <div class="price-box"><span class="weight">5g</span><span class="amount">40 €</span></div>
+                <div class="price-box"><span class="weight">10g</span><span class="amount">70 €</span></div>
+                <div class="price-box"><span class="weight">25g</span><span class="amount">170 €</span></div>
+                <div class="price-box"><span class="weight">50g</span><span class="amount">300 €</span></div>
+            </div>
+            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
+        </div>
+    </div>
+
     <!-- PAGE AVIS -->
     <div id="page-avis" class="page">
         <div class="page-header">
@@ -732,6 +777,14 @@
             for (let i = 1; i <= 2; i++) {
                 document.getElementById('main-video-p7-' + i).style.display = (i === index) ? 'block' : 'none';
                 document.getElementById('thumb-p7-' + i).classList.toggle('active', i === index);
+            }
+        }
+
+        // Bascule média Produit 8 (Amnesia)
+        function showMediaP8(index) {
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById('main-video-p8-' + i).style.display = (i === index) ? 'block' : 'none';
+                document.getElementById('thumb-p8-' + i).classList.toggle('active', i === index);
             }
         }
 
