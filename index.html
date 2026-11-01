@@ -160,35 +160,6 @@
             display: block;
         }
         
-        /* MINIATURES EN CARRÉS ARRONDIS */
-        .thumbs-container {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 4px;
-        }
-        .thumb-box {
-            width: 55px;
-            height: 55px;
-            border-radius: 10px;
-            border: 2px solid #333;
-            overflow: hidden;
-            cursor: pointer;
-            background: #1c1c1e;
-            position: relative;
-            flex-shrink: 0;
-            transition: border-color 0.2s;
-        }
-        .thumb-box.active {
-            border-color: #ff9900;
-            box-shadow: 0 0 8px rgba(255, 153, 0, 0.4);
-        }
-        .thumb-box img, .thumb-box video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         .product-title {
             font-weight: bold;
             font-size: 20px;
@@ -352,198 +323,69 @@
         </div>
 
         <div class="catalog-grid">
-            <!-- PRODUIT 1 : MIMOSA -->
+            <!-- ARTICLE 1 : FROZEN SIXTAR - PAPAYA -->
             <div class="catalog-item" onclick="switchPage('produit-1')">
-                <img src="IMG_6179.jpeg" alt="Dry No Farm" class="catalog-img">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Frozen%201.mp4#t=1" class="catalog-img" muted preload="metadata"></video>
                 <div>
-                    <div class="catalog-name">Dry No Farm</div>
-                    <div class="catalog-sub">Mimosa 🍋🍋‍🟩</div>
+                    <div class="catalog-name">Frozen Sixtar</div>
+                    <div class="catalog-sub">papaya 🍹</div>
                 </div>
                 <div class="catalog-price">À partir de 10 €</div>
             </div>
 
-            <!-- PRODUIT 2 : WILZ FARM (GELATO / LEMON / BANANA) -->
-            <div class="catalog-item" onclick="switchPage('produit-4')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4#t=1" class="catalog-img" muted preload="metadata"></video>
+            <!-- ARTICLE 2 : FROZEN SIXTAR - GMO -->
+            <div class="catalog-item" onclick="switchPage('produit-2')">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Frozen%202.mp4#t=1" class="catalog-img" muted preload="metadata"></video>
                 <div>
-                    <div class="catalog-name">Dry 90u Prenium ✅</div>
-                    <div class="catalog-sub">Wilz Farm 🧪👨‍🔬</div>
-                </div>
-                <div class="catalog-price">À partir de 10 €</div>
-            </div>
-
-            <!-- PRODUIT 3 : WILZ FARMZ (PINK RUNTZ) -->
-            <div class="catalog-item" onclick="switchPage('produit-5')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%205%20(%20pink%20runtz).mp4#t=1" class="catalog-img" muted preload="metadata"></video>
-                <div>
-                    <div class="catalog-name">Dry 90u Prenium ✅</div>
-                    <div class="catalog-sub">Wilz Farmz 🧪👨‍🔬</div>
-                </div>
-                <div class="catalog-price">À partir de 10 €</div>
-            </div>
-
-            <!-- PRODUIT 4 : CALI MOUSSE -->
-            <div class="catalog-item" onclick="switchPage('produit-7')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4#t=1" class="catalog-img" muted preload="metadata"></video>
-                <div>
-                    <div class="catalog-name">Monster CaliMousse 🧽🇺🇸</div>
-                    <div class="catalog-sub">Summer Édition ☄️</div>
-                </div>
-                <div class="catalog-price">À partir de 13 €</div>
-            </div>
-
-            <!-- PRODUIT 5 : AMNESIA -->
-            <div class="catalog-item" onclick="switchPage('produit-8')">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Ammesia%20.mp4#t=1" class="catalog-img" muted preload="metadata"></video>
-                <div>
-                    <div class="catalog-name">Amnesia</div>
-                    <div class="catalog-sub">🍁</div>
+                    <div class="catalog-name">Frozen Sixtar</div>
+                    <div class="catalog-sub">Gmo ⚡️</div>
                 </div>
                 <div class="catalog-price">À partir de 10 €</div>
             </div>
         </div>
     </div>
 
-    <!-- SOUS-PAGE 1 : MIMOSA -->
+    <!-- SOUS-PAGE 1 : FROZEN SIXTAR - PAPAYA -->
     <div id="page-produit-1" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
-            <img src="IMG_6179.jpeg" alt="Dry No Farm - Mimosa" class="product-img">
+            <div class="main-media-container">
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Frozen%201.mp4" class="product-video" controls playsinline></video>
+            </div>
             <div>
-                <div class="product-title">Dry No Farm</div>
-                <div class="product-desc">Mimosa 🍋🍋‍🟩</div>
+                <div class="product-title">Frozen Sixtar</div>
+                <div class="product-desc">papaya 🍹</div>
             </div>
             <div class="pricing-grid">
                 <div class="price-box"><span class="weight">1g</span><span class="amount">10 €</span></div>
-                <div class="price-box"><span class="weight">5g</span><span class="amount">35 €</span></div>
-                <div class="price-box"><span class="weight">10g</span><span class="amount">60 €</span></div>
-                <div class="price-box"><span class="weight">25g</span><span class="amount">150 €</span></div>
-                <div class="price-box"><span class="weight">50g</span><span class="amount">250 €</span></div>
-                <div class="price-box"><span class="weight">100g</span><span class="amount">450 €</span></div>
-            </div>
-            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
-        </div>
-    </div>
-
-    <!-- SOUS-PAGE 4 : WILZ FARM (GELATO / LEMON / BANANA) -->
-    <div id="page-produit-4" class="page">
-        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
-        <div class="product-card">
-            <div class="main-media-container">
-                <video id="main-video-p4-1" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4" class="product-video" controls playsinline></video>
-                <video id="main-video-p4-2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20lemon%20cherry)%20.mp4" class="product-video" controls playsinline style="display:none;"></video>
-                <video id="main-video-p4-3" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20banana%20).mp4" class="product-video" controls playsinline style="display:none;"></video>
-            </div>
-            <div class="thumbs-container">
-                <div class="thumb-box active" id="thumb-p4-1" onclick="showMediaP4(1)">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204%20(%20gelato%20).mp4" muted playsinline></video>
-                </div>
-                <div class="thumb-box" id="thumb-p4-2" onclick="showMediaP4(2)">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20lemon%20cherry)%20.mp4" muted playsinline></video>
-                </div>
-                <div class="thumb-box" id="thumb-p4-3" onclick="showMediaP4(3)">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%204(%20banana%20).mp4" muted playsinline></video>
-                </div>
-            </div>
-            <div>
-                <div class="product-title">Dry 90u Prenium ✅</div>
-                <div class="product-desc">Wilz Farm 🧪👨‍🔬<br>40% THC<br>- GELATO 33 🍭🍦<br>- LEMON CHERRY 🍋🍒<br>- BANANA PUNCH 🍌🍹</div>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-box"><span class="weight">1g</span><span class="amount">10 €</span></div>
-                <div class="price-box"><span class="weight">5g</span><span class="amount">35 €</span></div>
-                <div class="price-box"><span class="weight">10g</span><span class="amount">65 €</span></div>
-                <div class="price-box"><span class="weight">25g</span><span class="amount">150 €</span></div>
-                <div class="price-box"><span class="weight">50g</span><span class="amount">250 €</span></div>
-            </div>
-            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
-        </div>
-    </div>
-
-    <!-- SOUS-PAGE 5 : WILZ FARMZ (PINK RUNTZ) -->
-    <div id="page-produit-5" class="page">
-        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
-        <div class="product-card">
-            <div class="main-media-container">
-                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Produit%205%20(%20pink%20runtz).mp4" class="product-video" controls playsinline></video>
-            </div>
-            <div>
-                <div class="product-title">Dry 90u Prenium ✅</div>
-                <div class="product-desc">Wilz Farmz 🧪👨‍🔬<br>39% THC<br>PINK RUNTZ 🍇🍌</div>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-box"><span class="weight">1g</span><span class="amount">10 €</span></div>
-                <div class="price-box"><span class="weight">5g</span><span class="amount">35 €</span></div>
-                <div class="price-box"><span class="weight">10g</span><span class="amount">65 €</span></div>
-                <div class="price-box"><span class="weight">25g</span><span class="amount">150 €</span></div>
-                <div class="price-box"><span class="weight">50g</span><span class="amount">250 €</span></div>
-            </div>
-            <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
-        </div>
-    </div>
-
-    <!-- SOUS-PAGE 7 : CALI MOUSSE -->
-    <div id="page-produit-7" class="page">
-        <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
-        <div class="product-card">
-            <div class="main-media-container">
-                <video id="main-video-p7-1" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4" class="product-video" controls playsinline></video>
-                <video id="main-video-p7-2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6%20().mp4" class="product-video" controls playsinline style="display:none;"></video>
-            </div>
-            <div class="thumbs-container">
-                <div class="thumb-box active" id="thumb-p7-1" onclick="showMediaP7(1)">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6.mp4" muted playsinline></video>
-                </div>
-                <div class="thumb-box" id="thumb-p7-2" onclick="showMediaP7(2)">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/6%20().mp4" muted playsinline></video>
-                </div>
-            </div>
-            <div>
-                <div class="product-title">Monster CaliMousse 🧽🇺🇸</div>
-                <div class="product-desc">Summer Édition ☄️<br>- IceCream Cake🍰<br>- IceCream Pie🧁<br>- Oreoz🍩<br>- Papaya🍉🥭<br>- Runtz🍬🍭</div>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-box"><span class="weight">1g</span><span class="amount">13 €</span></div>
                 <div class="price-box"><span class="weight">5g</span><span class="amount">40 €</span></div>
                 <div class="price-box"><span class="weight">10g</span><span class="amount">70 €</span></div>
                 <div class="price-box"><span class="weight">25g</span><span class="amount">160 €</span></div>
-                <div class="price-box"><span class="weight">50g</span><span class="amount">260 €</span></div>
-                <div class="price-box"><span class="weight">100g</span><span class="amount">480 €</span></div>
+                <div class="price-box"><span class="weight">50g</span><span class="amount">280 €</span></div>
+                <div class="price-box"><span class="weight">100g</span><span class="amount">540 €</span></div>
             </div>
             <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
         </div>
     </div>
 
-    <!-- SOUS-PAGE 8 : AMNESIA -->
-    <div id="page-produit-8" class="page">
+    <!-- SOUS-PAGE 2 : FROZEN SIXTAR - GMO -->
+    <div id="page-produit-2" class="page">
         <button class="btn-back" onclick="switchPage('catalogue')">← Retour au catalogue</button>
         <div class="product-card">
             <div class="main-media-container">
-                <video id="main-video-p8-1" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Ammesia%20.mp4" class="product-video" controls playsinline></video>
-                <video id="main-video-p8-2" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Ammesia%202.mp4" class="product-video" controls playsinline style="display:none;"></video>
-                <video id="main-video-p8-3" src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Ammesia%203.mp4" class="product-video" controls playsinline style="display:none;"></video>
-            </div>
-            <div class="thumbs-container">
-                <div class="thumb-box active" id="thumb-p8-1" onclick="showMediaP8(1)">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Ammesia%20.mp4" muted playsinline></video>
-                </div>
-                <div class="thumb-box" id="thumb-p8-2" onclick="showMediaP8(2)">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Ammesia%202.mp4" muted playsinline></video>
-                </div>
-                <div class="thumb-box" id="thumb-p8-3" onclick="showMediaP8(3)">
-                    <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Ammesia%203.mp4" muted playsinline></video>
-                </div>
+                <video src="https://raw.githubusercontent.com/tk7s8bvbwj-coder/Ma-mini-app/main/Frozen%202.mp4" class="product-video" controls playsinline></video>
             </div>
             <div>
-                <div class="product-title">Amnesia</div>
-                <div class="product-desc">🍁</div>
+                <div class="product-title">Frozen Sixtar</div>
+                <div class="product-desc">Gmo ⚡️</div>
             </div>
             <div class="pricing-grid">
                 <div class="price-box"><span class="weight">1g</span><span class="amount">10 €</span></div>
                 <div class="price-box"><span class="weight">5g</span><span class="amount">40 €</span></div>
                 <div class="price-box"><span class="weight">10g</span><span class="amount">70 €</span></div>
-                <div class="price-box"><span class="weight">25g</span><span class="amount">170 €</span></div>
-                <div class="price-box"><span class="weight">50g</span><span class="amount">300 €</span></div>
+                <div class="price-box"><span class="weight">25g</span><span class="amount">160 €</span></div>
+                <div class="price-box"><span class="weight">50g</span><span class="amount">280 €</span></div>
+                <div class="price-box"><span class="weight">100g</span><span class="amount">540 €</span></div>
             </div>
             <a href="https://www.snapchat.com/add/bendouzindustry" target="_blank" class="btn-snap">Commander sur Snapchat 👻</a>
         </div>
@@ -635,30 +477,6 @@
             if (navBtn) navBtn.classList.add('active');
 
             window.scrollTo(0, 0);
-        }
-
-        // Bascule média Produit 4 (Wilz Farm)
-        function showMediaP4(index) {
-            for (let i = 1; i <= 3; i++) {
-                document.getElementById('main-video-p4-' + i).style.display = (i === index) ? 'block' : 'none';
-                document.getElementById('thumb-p4-' + i).classList.toggle('active', i === index);
-            }
-        }
-
-        // Bascule média Produit 7 (Cali Mousse)
-        function showMediaP7(index) {
-            for (let i = 1; i <= 2; i++) {
-                document.getElementById('main-video-p7-' + i).style.display = (i === index) ? 'block' : 'none';
-                document.getElementById('thumb-p7-' + i).classList.toggle('active', i === index);
-            }
-        }
-
-        // Bascule média Produit 8 (Amnesia)
-        function showMediaP8(index) {
-            for (let i = 1; i <= 3; i++) {
-                document.getElementById('main-video-p8-' + i).style.display = (i === index) ? 'block' : 'none';
-                document.getElementById('thumb-p8-' + i).classList.toggle('active', i === index);
-            }
         }
 
         function envoyerAvis() {
